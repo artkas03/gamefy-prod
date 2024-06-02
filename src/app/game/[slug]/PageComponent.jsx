@@ -2,7 +2,7 @@ import React from 'react'
 
 const PageComponent = ({ data }) => {
   return (
-    <div>{data}</div>
+    <div>{JSON.stringify(data)}</div>
   )
 }
 

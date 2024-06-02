@@ -1,7 +1,7 @@
-const helloworld = async(slug) => {
-  const data = await Promise.resolve('DATA with slug: ' + slug);
+import getGameBySlug from "@/services/getGameBySlug";
 
-  return data;
+const helloworld = async(slug) => {
+  return getGameBySlug(slug);
 }
 
 export default helloworld;

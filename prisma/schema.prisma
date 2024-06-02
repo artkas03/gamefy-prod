@@ -1,0 +1,111 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url = env("DATABASE_URL")
+  directUrl = env("POSTGRES_URL_NO_SSL")
+}
+
+model User {
+  id          Int             @id @default(autoincrement())
+  username    String          @unique
+  email       String          @unique
+  password    String
+  comments    Comment[]
+  collection  UserCollection?
+}
+
+model Genre {
+  id          Int           @id @default(autoincrement())
+  genre       String        @unique
+  games       GameToGenre[]
+}
+
+model Company {
+  id    Int    @id @default(autoincrement())
+  name  String
+  games Game[]
+}
+
+model Comment {
+  id            Int    @id @default(autoincrement())
+  game          Game   @relation(fields: [gameId], references: [id])
+  gameId        Int
+  user          User   @relation(fields: [userId], references: [id])
+  userId        Int
+  likesNumber   Int    @default(0)
+  usersIdLiked  Int[]
+  text          String
+}
+model UserScore {
+  id         Int      @id @default(autoincrement())
+  game       Game     @relation(fields: [gameSlug], references: [slug])
+  gameSlug   String   @unique
+  markOne    Int[]    @default([])
+  markTwo    Int[]    @default([])
+  markThree  Int[]    @default([])
+  markFour   Int[]    @default([])
+  markFive   Int[]    @default([])
+}
+
+model GameRequirements {
+  id                           Int      @id @default(autoincrement())
+  game                         Game     @relation(fields: [gameId], references: [id])
+  gameId                       Int      @unique
+  minimumPreInfo               String   @default("")
+  minimumOS                    String   @default("")
+  minimumProcessor             String   @default("")
+  minimumMemory                String   @default("")
+  minimumGPU                   String   @default("")
+  minimumStorage               String   @default("")
+  minimumAdditionalNotes       String   @default("")
+  recommendedPreInfo           String   @default("")
+  recommendedOS                String   @default("")
+  recommendedProcessor         String   @default("")
+  recommendedMemory            String   @default("")
+  recommendedGPU               String   @default("")
+  recommendedStorage           String   @default("")
+  recommendedAdditionalNotes   String   @default("")
+}
+
+model Game {
+  id                   Int               @id @default(autoincrement())
+  name                 String            @unique
+  company              Company           @relation(fields: [companyId], references: [id])
+  companyId            Int
+  slug                 String            @unique
+  description          String            @default("")
+  platforms            String[]          @default(["PC", "PS5"])
+  releaseDate          String            @default("")
+  voiceLanguages       String[]          @default(["English", "Ukrainian"])
+  subtitlesLanguages   String[]          @default(["English", "Ukrainian"])
+  requirements         GameRequirements?
+  userScore            UserScore?
+  genres               GameToGenre[]
+  comments             Comment[]
+}
+
+model GameToGenre {
+  gameId  Int
+  genreId Int
+  Game    Game  @relation(fields: [gameId], references: [id], onDelete: Cascade, map: "_GameToGenre_A_fkey")
+  Genre   Genre @relation(fields: [genreId], references: [id], onDelete: Cascade, map: "_GameToGenre_B_fkey")
+
+  @@unique([gameId, genreId], map: "_GameToGenre_AB_unique")
+  @@index([genreId], map: "_GameToGenre_B_index")
+  @@map("_GameToGenre")
+}
+
+model UserCollection {
+  id          Int    @id @default(autoincrement())
+  user        User?  @relation(fields: [userId], references: [id])
+  userId      Int    @unique
+  inProgress  Int[]
+  favorite    Int[]
+  finished    Int[]
+  planning    Int[]
+  dropped     Int[]
+  postponed   Int[]
+}
