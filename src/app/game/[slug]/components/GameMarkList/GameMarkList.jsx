@@ -1,7 +1,7 @@
 'use client';
-import axiosInstance from '@/utils/scripts/api';
+// import axiosInstance from '@/utils/scripts/api';
 import { Button, Progress } from '@nextui-org/react';
-import { useSession } from 'next-auth/react';
+// import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 
@@ -9,7 +9,7 @@ const GameMarkList = ({
   gameSlug,
   userScoreData
 }) => {
-  const { data: session } = useSession();
+  // const { data: session } = useSession();
   const router = useRouter();
   const [userMark, setUserMark] = useState('0');
 
@@ -18,24 +18,26 @@ const GameMarkList = ({
     total
   } = userScoreData;
 
-  const getClickOnMarkHandler = (mark) => () => {
-    if (!session?.user) {
-      router.replace('/authorization');
-    }
+  const getClickOnMarkHandler = () => () => {};
 
-    axiosInstance.patch('/games/markGame', {
-      userEmail: session.user.email,
-      mark,
-      gameSlug
-    });
-  };
+  // const getClickOnMarkHandler = (mark) => () => {
+  //   if (!session?.user) {
+  //     router.replace('/authorization');
+  //   }
 
-  useEffect(() => {
-    if (session?.user) {
-      axiosInstance.get('/comments/getCurrentUserMark' + `?gameSlug=${gameSlug}` + `&userEmail=${session.user.email}`)
-        .then((response) => setUserMark(response.data.userMark));
-    }
-  });
+  //   axiosInstance.patch('/games/markGame', {
+  //     userEmail: session.user.email,
+  //     mark,
+  //     gameSlug
+  //   });
+  // };
+
+  // useEffect(() => {
+  //   if (session?.user) {
+  //     axiosInstance.get('/comments/getCurrentUserMark' + `?gameSlug=${gameSlug}` + `&userEmail=${session.user.email}`)
+  //       .then((response) => setUserMark(response.data.userMark));
+  //   }
+  // });
 
   return (
     <ul className="game__review-score-list">

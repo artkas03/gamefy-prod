@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import { GameRequirementItem } from '../GameRequirementItem';
+import { GamePreview } from '../GamePreview';
 
 const defaultGameData = {
   userScore: {
@@ -43,6 +44,8 @@ const GamePageComponent = ({ gameData }) => {
 
   return (
     <div className="game grid">
+      <GamePreview gameSlug={gameData.slug} gameData={gameData} />
+
       <div className="game__requirements grid">
         <h3 className="game__requirements-title game__title">
           System requirements

@@ -15,10 +15,10 @@ import {
   DropdownTrigger,
 } from '@nextui-org/react';
 // import { useSession } from 'next-auth/react';
-import getAverateMark from '@/utils/scripts/getAverageMark';
+// import getAverateMark from '@/utils/scripts/getAverageMark';
 import collectionListsKeys from '@/utils/scripts/collectionListsKeys';
 import cn from 'classnames';
-import axiosInstance from '@/utils/scripts/api';
+// import axiosInstance from '@/utils/scripts/api';
 import { useRouter } from 'next/navigation';
 
 export const HomepageSliderSlideContent = ({
@@ -26,6 +26,7 @@ export const HomepageSliderSlideContent = ({
   gameData,
   isHideContent = false,
 }) => {
+  console.log('Slider data: ', gameData);
   // TODO: Rewrite hadnling adding to the user collection
   const [addedToCollection, setAddedToCollection] = useState('');
 
@@ -57,7 +58,7 @@ export const HomepageSliderSlideContent = ({
   const { genres, name, company, userScore, description } = gameData;
 
   const genre = genres[0] || '';
-  const totalMark = getAverateMark(userScore);
+  const totalMark = 0;
 
   // const handleAddToCollection = async (newCollection) => {
   //   const currentCollection = addedToCollection;
@@ -104,7 +105,7 @@ export const HomepageSliderSlideContent = ({
         <div className="swiper-background__content">
           <div className="swiper-background__wrapper grid">
             <Chip color="primary" className="swiper-background__chip">
-              {genre.toLocaleUpperCase()}
+              {''.toLocaleUpperCase()}
             </Chip>
 
             <h3 className="swiper-background__title">{name}</h3>
@@ -118,7 +119,7 @@ export const HomepageSliderSlideContent = ({
                 height={16}
               /> */}
 
-              <h4 className="swiper-background__company-name">{company}</h4>
+              <h4 className="swiper-background__company-name">{company.name}</h4>
 
               <div className="swiper-background__company-delimeter">
                 <svg
@@ -157,7 +158,7 @@ export const HomepageSliderSlideContent = ({
 
             <p className="swiper-background__description">{description}</p>
 
-            <ButtonGroup className="swiper-background__buttons">
+            {/* <ButtonGroup className="swiper-background__buttons">
               <Button
                 color="primary"
                 className="swiper-background__button primary-button"
@@ -320,7 +321,7 @@ export const HomepageSliderSlideContent = ({
                   )}
                 </Dropdown>
               )}
-            </ButtonGroup>
+            </ButtonGroup> */}
           </div>
         </div>
       )}
