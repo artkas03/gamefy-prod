@@ -1,10 +1,9 @@
 import React from 'react'
 import PageComponent from './PageComponent';
+import helloworld from '@/controllers/helloworld';
 
-const Gamepage = async() => {
-  const response = await fetch('http://localhost:3000/api/helloworld');
-
-  const data = await response.json();
+async function Gamepage() {
+  const data = await helloworld();
 
   return (
     <PageComponent data={data} />
