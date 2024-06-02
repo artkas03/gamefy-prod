@@ -1,5 +1,5 @@
 const helloworld = async(slug) => {
-  const data = await Promise.resolve('DATA with slug: ' + data);
+  const data = await Promise.resolve('DATA with slug: ' + slug);
 
   return data;
 }
