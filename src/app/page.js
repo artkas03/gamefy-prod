@@ -1,4 +1,3 @@
-import { GameCard } from "@/components/GameCard";
 import getGames from "../services/getGames";
 import { HomepageSlider } from "@/components/HomepageSlider";
 import { GameCatalogHOC } from "@/hocs/GameCatalogHOC";

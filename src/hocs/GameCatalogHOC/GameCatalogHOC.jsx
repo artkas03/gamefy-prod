@@ -60,7 +60,7 @@ export const GameCatalogHOC = ({
   // const { data: session } = useSession();
   const { breakpoint } = useBreakpoint(BREAKPOINTS, 'mobile');
   const [page, setPage] = useState(1);
-  const [pageGames, setPageGames] = useState([]);
+  const [pageGames, setPageGames] = useState(gamesToShow || []);
   const [isLoading, setIsLoading] = useState(false);
   const [horizonralMenuActiveList, setHorizonralMenuActiveList] = useState(userData ? Object.keys(collectionListsKeys)[0] : '');
   // const { 
