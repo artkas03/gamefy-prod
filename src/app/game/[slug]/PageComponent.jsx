@@ -7,7 +7,7 @@ const PageComponent = ({ data }) => {
   });
 
   return (
-    <div>{JSON.stringify(data)}</div>
+    <div>Data: {JSON.stringify(data)}</div>
   )
 }
 
