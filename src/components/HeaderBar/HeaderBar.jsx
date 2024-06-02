@@ -1,6 +1,6 @@
 'use client';
 import React, { useCallback, useContext, useState } from 'react';
-import logo from '../../../assets/img/logo.png';
+// import logo from '../../../assets/img/logo.png';
 
 import './styles.scss';
 import {
@@ -15,14 +15,14 @@ import { HeaderBarSearch } from './components';
 import { useRouter } from 'next/navigation';
 import { SidebarBurgerMenuButton } from '../Sidebar/SidebarBurgerMenuButton';
 import Link from 'next/link';
-import { signOut, useSession } from 'next-auth/react';
-import { userContextMenu } from '@/src/appconfig';
+import { userContextMenu } from 'appconfig';
+// import { signOut, useSession } from 'next-auth/react';
 
 export const HeaderBar = () => {
   const [isSearchActive, setIsSearchActive] = useState(false);
   const router = useRouter();
 
-  const { data: session } = useSession();
+  // const { data: session } = useSession();
 
   const handleSearchClose = useCallback(() => setIsSearchActive(false), []);
 
@@ -40,7 +40,7 @@ export const HeaderBar = () => {
                 className="header-bar__logo"
                 height={24}
                 width={70}
-                src={logo?.src}
+                // src={logo?.src}
                 alt="logo"
               />
             </Link>
@@ -75,7 +75,7 @@ export const HeaderBar = () => {
                 </svg>
               </Button>
 
-              {session?.user ? (
+              {false ? (
                 <>
                   <SidebarBurgerMenuButton shouldDissapearFrom={'tablet'} />
 

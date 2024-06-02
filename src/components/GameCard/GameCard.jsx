@@ -84,7 +84,7 @@ export const GameCard = memo(
               width={732}
               height={430}
               objectfit="contain"
-              // src={checkIfProduction() ? getS3ImageUrl(slug, 430) : cardImage.src}s
+              // src={getS3ImageUrl(slug, 430)}
               alt="ALT"
               fetchPriority='low'
             />

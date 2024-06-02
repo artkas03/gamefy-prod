@@ -8,7 +8,7 @@
       "@/utils/*": ["./src/utils/*"],
       "@/img/*": ["./assets/img/*"],
       "@/src/*": ["./src/*"],
-      "@/scripts/*": ["./src/scripts/*"],
+      "@/scripts/*": ["./src/utils/scripts/*"],
       "@/controllers/*": ["./src/controllers/*"],
       "@/middleware/*": ["./middleware/*"],
       "@/services/*": ["./src/services/*"],
