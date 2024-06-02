@@ -1,0 +1,74 @@
+@import '../../utils/styles/variables.scss';
+@import '../../utils/mixins/media-queries.scss';
+
+.form {
+  font-weight: 700;
+  grid-column: 1 / -1;
+
+  @include tablet {
+    grid-column: 2 / -2;
+  }
+
+  @include desktop {
+    grid-column: 1 / 6;
+  }
+
+  @include desktop {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &__title {
+    font-size: 48px;
+    line-height: 60px; /* 125% */
+    letter-spacing: -0.96px;
+    margin-bottom: 8px;
+
+    @include tablet {
+      font-size: 60px;
+    }
+  }
+
+  &__subtitle {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+    margin-bottom: 32px;
+    font-family: var(--font-inter);
+
+    @include tablet {
+      font-size: 14px;
+      margin-bottom: 48px;
+    }
+  }
+
+  &__button {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  &__footertext-group {
+    font-size: 14px;
+    margin-bottom: 14px;
+
+    &-wrapper {
+      width: fit-content;
+      margin: 0 auto;
+    }
+
+    &-text {
+      font-weight: 400;
+      color: $main-gray-400;
+    }
+
+    &-link {
+      transition: all .3s ease;
+
+      &:hover {
+        color: $main-gray-500;
+      }
+    }
+  }
+}

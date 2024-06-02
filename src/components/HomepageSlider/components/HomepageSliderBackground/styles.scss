@@ -1,0 +1,17 @@
+@import '../../../../utils/mixins/media-queries.scss';
+
+.swiper {
+  &-slide {
+    height: fit-content !important;
+  }
+
+  &-background {
+    margin-inline: -16px !important;
+    grid-column: 1 / -1;
+
+    //TODO: Fix the image rendering when changing 'lg-desktop' to 'desktop'
+    @include lg-desktop {
+      margin-inline: -128px !important;
+    }
+  }
+}

@@ -1,0 +1,25 @@
+@import '../../../utils/mixins/media-queries.scss';
+
+.burger-menu-button {
+  height: auto;
+  min-width: auto;
+  padding: 12px;
+
+  &--dissapear-from {
+    &-modile {
+      display: none;
+    }
+
+    &-tablet {
+      @include tablet {
+        display: none;
+      }
+    }
+
+    &-desktop {
+      @include desktop {
+        display: none;
+      }
+    }
+  }
+}

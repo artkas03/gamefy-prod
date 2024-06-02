@@ -1,0 +1,125 @@
+@import '../../utils/styles/variables.scss';
+@import '../../utils/mixins/media-queries.scss';
+
+.footer {
+  background-color: $main-gray-800;
+  grid-column: 1 / -1;
+  border-radius: 16px;
+  padding: 16px;
+
+  &__bottom {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include tablet {
+      margin-top: 32px;
+      gap: 32px;
+    }
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include tablet {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &__logo {
+    min-width: 70px;
+    height: fit-content;
+
+    &--mobile {
+      @include tablet {
+        display: none;
+      }
+    }
+
+    &--tablet {
+      display: none;
+
+      @include tablet {
+        display: block;
+      }
+    }
+  }
+
+  &__bottom {
+    &-text {
+      text-align: center;
+      font-size: 14px;
+      line-height: 20px;
+      color: $main-gray-200;
+    }
+  }
+
+  &__wrapper {
+    margin-top: 72px;
+    margin-bottom: 29px;
+    width: 100%;
+    height: fit-content;
+    grid-column: 1 / -1;
+  }
+
+  &__columns {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__column {
+    &-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      &-title {
+        margin-bottom: 16px;
+        font-size: 14px;
+        color: $main-gray-400;
+        font-weight: 500;
+        line-height: 20px;
+      }
+
+      &-item {
+        &-link {
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 20px;
+          color: $main-gray-100;
+        }
+      }
+
+      &--mobile {
+        width: fit-content;
+        margin: 0 auto;
+        flex-direction: row;
+        gap: 16px;
+      }
+    }
+
+    &--links {
+      &-mobile {
+        @include tablet {
+          display: none;
+        }
+      }
+
+      &-desk {
+        display: none;
+
+        @include tablet {
+          display: block;
+        }
+      }
+    }
+  }
+
+  @include tablet {
+    padding: 32px;
+  }
+}

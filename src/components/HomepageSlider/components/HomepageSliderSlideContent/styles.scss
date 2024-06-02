@@ -1,0 +1,150 @@
+@import '../../../../utils/mixins/media-queries.scss';
+
+
+.swiper {
+  &-background {
+    &__image {
+      height: 572px;
+
+      @include desktop {
+        height: 785px;
+      }
+    }
+
+    &__content {
+      padding-inline: 16px;
+      bottom: 0;
+      position: absolute;
+      padding-bottom: 94px;
+      width: 100%;
+    }
+
+    &__wrapper {
+      height: auto;
+    }
+
+    &__chip {
+      border-radius: 4px;
+      padding: 4px 8px;
+      margin-bottom: 8px;
+      grid-column: 1 / -1;
+
+      span {
+        padding: 0;
+        line-height: 18px;
+      }
+
+      @include tablet {
+        grid-column: span 4;
+      }
+    }
+
+    &__title {
+      margin-bottom: 8px;
+      font-size: 36px;
+      line-height: 44px;
+      letter-spacing: -0.72px;
+      font-weight: 700;
+      grid-column: 1 / -1;
+
+      @include tablet {
+        grid-column: 1 / 6;
+      }
+
+      @include desktop {
+        grid-column: 1 / 7;
+      }
+    }
+
+    &__details {
+      display: flex;
+      align-items: center;
+      margin-bottom: 24px;
+      grid-column: 1 / -1;
+
+      @include tablet {
+        grid-column: 1 / 6;
+      }
+
+      @include desktop {
+        grid-column: 1 / 7;
+      }
+    }
+
+    &__company {
+      grid-column: 1 / -1;
+
+      &-logo {
+        height: 16px;
+        margin-right: 4px;
+      }
+
+      &-name {
+        margin-right: 16px;
+        font-weight: 300;
+      }
+
+      &-delimeter {
+        margin-right: 16px;
+      }
+
+      @include tablet {
+        grid-column: 1 / 6;
+      }
+
+      @include desktop {
+        grid-column: 1 / 7;
+      }
+    }
+
+    &__mark {
+      align-items: center;
+      display: flex;
+      gap: 4px;
+    }
+
+    &__description {
+      margin-bottom: 24px;
+      font-size: 14px;
+      line-height: 20px;
+      max-height: 60px;
+      font-weight: 300;
+      grid-column: 1 / -1;
+
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      white-space: pre-wrap;
+
+      @include tablet {
+        grid-column: 1 / 6;
+      }
+
+      @include desktop {
+        grid-column: 1 / 7;
+      }
+    }
+
+    &__buttons {
+      width: 100%;
+      flex-direction: column;
+      gap: 8px;
+      grid-column: 1 / -1;
+
+      @include tablet {
+        grid-column: 1 / 6;
+        flex-direction: row;
+      }
+
+      @include desktop {
+        grid-column: 1 / 7;
+      }
+    }
+
+    &__button {
+      width: 100%;
+      border-radius: 8px !important;
+    }
+  }
+}

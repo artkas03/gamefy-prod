@@ -1,0 +1,136 @@
+@import '../../utils/styles/variables.scss';
+@import '../../utils/mixins/media-queries.scss';
+
+.game-card {
+  grid-column: span 1;
+  border-radius: 8px;
+  border: 1px solid $main-gray-700;
+  overflow: hidden;
+  background-color: $main-gray-800;
+  display: flex;
+  flex-direction: column;
+
+  &__dropdown {
+    &-item {
+      color: $main-gray-400;
+      transition: background-color .3s ease;
+
+      span {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+      }
+
+      &--active {
+        border-radius: 4px;
+        background-color: $main-primary-400 !important;
+        color: white !important;
+      }
+
+      &--delete {
+        color: $secondary-error-700;
+      }
+
+      &:hover {
+        background-color: $main-gray-700 !important;
+      }
+    }
+  }
+  
+  &__header {
+    position: relative;
+    background-color: $main-gray-700;
+  }
+
+  &__on-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &__chip {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    border-radius: 4px;
+    padding: 4px 8px;
+    z-index: 10;
+
+    span {
+      padding: 0;
+    }
+  }
+
+  &__button {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    height: auto;
+    min-width: auto;
+    padding: 8px;
+    z-index: 10;
+  }
+
+  &__image {
+    border-radius: 0;
+    object-fit: cover;
+    aspect-ratio: 1.7;
+    z-index: 5;
+
+    @include tablet {
+      aspect-ratio: 1.05;
+    }
+
+    @include desktop {
+      aspect-ratio: 1.2;
+    }
+  }
+
+  &__footer {
+    padding: 16px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 30px;
+    margin-bottom: 8px;
+
+    @include desktop {
+      font-size: 24px;
+    }
+  }
+
+  &__details {
+    display: flex;
+    align-items: center;
+  }
+
+  &__mark {
+    gap: 4px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__company {
+    &-logo {
+      margin-right: 4px;
+    }
+
+    &-name {
+      margin-right: 8px;
+      // margin-left: 4px;
+    }
+
+    &-delimeter {
+      margin-right: 8px;
+    }
+  }
+}

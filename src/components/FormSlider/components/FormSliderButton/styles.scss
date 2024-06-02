@@ -1,0 +1,10 @@
+.slider-button {
+  display: block;
+  height: fit-content;
+  width: fit-content;
+  padding: 12px;
+
+  &-right svg {
+    transform: rotate(180deg);
+  }
+}

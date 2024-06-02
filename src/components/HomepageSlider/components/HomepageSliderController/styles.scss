@@ -1,0 +1,76 @@
+@import '../../../../utils/mixins/media-queries.scss';
+
+.swiper {
+  &-slide {
+    height: fit-content !important;
+  }
+
+  &-controller {
+    position: relative;
+
+    .swiper-slide-active {
+      border: 2px solid white;
+      border-radius: 8px;
+    }
+
+    &__wrapper {
+      position: relative;
+      margin-top: -24px;
+      grid-column: 1 / -1;
+
+      @include desktop {
+        grid-column: 8 / 13;
+      }
+    }
+
+    &__grid {
+      height: fit-content;
+
+      @include desktop {
+        height: fit-content;
+        margin-top: -146px;
+      }
+    }
+
+    &__image {
+      position: relative;
+      border-radius: 8px;
+      height: 71px !important;
+
+      &::after {
+        position: absolute;
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+        pointer-events: none;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+
+      @include tablet {
+        height: 105px !important;
+      }
+
+      @include desktop {
+        height: 72px !important;
+      }
+    }
+
+    &__button {
+      z-index: 1;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: unset;
+      margin-inline: -10px;
+
+      &-next {
+        right: 0;
+
+        svg {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+}

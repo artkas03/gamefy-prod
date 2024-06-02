@@ -1,0 +1,14 @@
+@import '../../utils/mixins/media-queries.scss';
+
+.homepage-swiper {
+  grid-column: 1 / -1;
+
+  &__skeleton {
+    height: 600px;
+    width: 100%;
+
+    @include desktop {
+      height: 800px;
+    }
+  }
+}

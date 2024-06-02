@@ -1,0 +1,29 @@
+@import '../../../src/utils/styles/variables.scss';
+@import '../../../src/utils/mixins/media-queries.scss';
+
+.horizontal-menu {
+  margin-bottom: 32px;
+  overflow: scroll;
+  grid-column: 1 / -1;
+  border-radius: 4px;
+  background-color: $main-gray-800;
+
+  &__list {
+    display: flex;
+    padding: 8px;
+
+    @include tablet {
+      justify-content: space-between;
+    }
+  }
+
+  &__item {
+    width: fit-content;
+  }
+
+  @include desktop {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+  }
+}

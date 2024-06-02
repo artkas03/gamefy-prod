@@ -1,0 +1,135 @@
+@import '../../utils/mixins/media-queries.scss';
+@import '../../utils/styles/variables.scss';
+
+.form-swiper {
+  padding-top: 16px;
+  height: 181px;
+  margin: -16px;
+  margin-bottom: 16px;
+  --left-offset: 12px;
+  grid-column: 1 / -1;
+
+  @include tablet {
+    height: 252px;
+    margin-bottom: 24px;
+    --left-offset: 24px;
+  }
+
+  @include desktop {
+    margin: 0px -16px 0px 0px;
+    padding-top: 0;
+    height: 100%;
+  }
+
+  div &__slide {
+    height: auto !important;
+  }
+
+  &__slide {
+    padding: 16px;
+    height: auto !important;
+
+    @include tablet {
+      padding: 32px;
+    }
+
+    @include desktop {
+      padding: 56px;
+    }
+
+    &-image {
+      height: 100px;
+      width: 100%;
+      opacity: 0.70;
+    }
+
+    &-logo {
+      position: absolute;
+
+      @include desktop {
+        display: none;
+      }
+    }
+  
+    &-text {
+      bottom: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      word-wrap: break-word;
+
+      @include tablet {
+        gap: 16px;
+      }
+
+      @include desktop {
+        gap: 24px;
+      }
+    }
+
+    &-title {
+      line-height: 30px;
+      font-size: 20px;
+      font-weight: 700;
+
+      @include tablet {
+        font-size: 32px;
+      }
+
+      @include desktop {
+        font-size: 48px;
+        line-height: 60px;
+      }
+    }
+
+    &-subtext {
+      font-weight: 400;
+      line-height: 18px;
+      font-size: 12px;
+
+      @include desktop {
+        font-size: 14px;
+      }
+    }
+
+    &-content {
+      position: absolute;
+      display: flex;
+      --bottom-offset: 16px;
+      width: calc(100% - var(--bottom-offset) * 2);
+      bottom: var(--bottom-offset);
+
+      @include tablet {
+        --bottom-offset: 32px;
+      }
+
+      @include desktop {
+        width: calc(100% - var(--left-offset) * 5 + var(--left-offset) / 2);
+        --bottom-offset: 56px;
+      }
+    }
+  }
+
+  &__buttons { 
+    display: none;
+    gap: 8px;
+    align-items: end;
+
+    @include desktop {
+      display: flex;
+    }
+  }
+
+  &__button {
+    display: block;
+    height: fit-content;
+    width: fit-content;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid $main-gray-600;
+
+    &-right {
+      transform: rotate(180deg)
+    }
+  }
+}

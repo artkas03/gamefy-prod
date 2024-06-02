@@ -1,0 +1,54 @@
+@import '../../../../utils/styles/variables.scss';
+
+.search-preview {
+  width: 100%;
+  height: fit-content;
+  background-color: $main-gray-800;
+  position: absolute;
+  top: calc(100% + 4px);
+  border-radius: 8px;
+  left: 0;
+  right: 0;
+
+  &__games {
+    padding: 16px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 30vh;
+    overflow: scroll;
+    scrollbar-width: none;
+
+    p {
+      font-size: 16px;
+      line-height: 24px;
+      min-height: 24px;
+      color: $main-gray-500;
+    }
+  }
+
+  &__game {
+    color: $main-gray-500;
+    font-size: 16px;
+    line-height: 24px;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+    overflow: hidden;
+    min-height: 24px;
+  }
+
+  &__button {
+    background-color: transparent;
+    color: $main-gray-500;
+    font-size: 14px;
+    width: 100%;
+    border-radius: 0 0 8px 8px;
+    text-align: left;
+    padding: 18px 24px;
+    min-height: 56px;
+
+    p {
+      width: 100%;
+    }
+  }
+}

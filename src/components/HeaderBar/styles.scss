@@ -1,0 +1,121 @@
+@import '../../utils/styles/variables.scss';
+@import '../../utils/mixins/media-queries.scss';
+
+.header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: fit-content;
+  padding: 8px 16px;
+
+  &__active {
+    &-search {
+      width: 100%;
+    }
+  }
+
+  &__logo {
+    min-width: 70px;
+  }
+
+  &-wrapper {
+    max-width: 1056px;
+    // TODO: header width fix
+    width: 100%;
+    z-index: 999;
+    top: 24px;
+    position: absolute;
+    grid-column: 1 / -1;
+    border-radius: 16px;
+    background-color: $main-gray-900;
+  }
+
+  &__search {
+    &-button {
+      border-radius: 8px;
+      min-width: auto;
+      height: auto;
+      padding: 12px;
+
+      &--signout {
+        width: 100%;
+        border-radius: 0;
+        background-color: transparent;
+        height: fit-content;
+        text-align: left;
+        justify-content: start;
+        padding: 0;
+      }
+    }
+
+    &-wrapper {
+      width: 100%;
+    }
+
+    &-sign-in {
+      display: none;
+
+      @include tablet {
+        display: block;
+      }
+    }
+
+    &-notifications {
+      display: none;
+
+      @include tablet {
+        display: block;
+      }
+    }
+
+    &-favorites {
+      display: none;
+
+      @include tablet {
+        display: block;
+      }
+    }
+
+    &-user {
+      display: none;
+
+      @include tablet {
+        display: block;
+      }
+    }
+
+    &-activate {
+      @include tablet {
+        display: none;
+      }
+    }
+
+    @include tablet {
+      display: block;
+    }
+  }
+
+  &__end {
+    display: flex;
+    gap: 8px;
+  }
+
+  div[data-slot="input-wrapper"] {
+    border-radius: 8px;
+    border: 1px solid $main-gray-800;
+    background-color: $main-gray-900;
+  }
+
+  @include tablet {
+    gap: 56px;
+    padding: 16px 32px;
+  }
+}
+
+.show-from-tablet {
+  display: none !important;
+
+  @include tablet {
+    display: block !important;
+  }
+}

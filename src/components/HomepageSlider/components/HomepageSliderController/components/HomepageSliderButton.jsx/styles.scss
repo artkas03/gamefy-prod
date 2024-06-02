@@ -1,0 +1,13 @@
+@import '../../../../../../src/utils/styles/variables.scss';
+
+.slider-button {
+  display: block;
+  height: fit-content;
+  width: fit-content;
+  padding: 12px;
+  margin-left: -20px;
+
+  &-right svg {
+    transform: rotate(180deg);
+  }
+}

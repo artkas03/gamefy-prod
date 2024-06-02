@@ -1,0 +1,59 @@
+@import '../utils/styles/index.scss';
+@import '../utils/mixins/media-queries.scss';
+
+html {
+  height: 100%;
+}
+
+body {
+  background-color: $main-gray-900;
+  box-sizing: border-box;
+  min-height: 100%;
+}
+
+.body {
+  &--overflow-hidden {
+    overflow: hidden;
+  }
+}
+
+.general-wrapper {
+  grid-column: 1 / -1;
+  padding-inline: 16px;
+  position: relative;
+  height: 100%;
+  min-height: 100vh;
+}
+
+.homepage {
+  grid-column: 1 / -1;
+  position: relative;
+  height: auto;
+
+  &__swiper {
+    min-height: 572px;
+  }
+
+  &__grid {
+    padding-inline: 16px;
+  }
+
+  &__game-catalog {
+    grid-column: 1 / -1;
+    margin-top: 72px;
+  
+    @include desktop {
+      margin-top: 160px;
+    }
+  }
+}
+
+div[data-slot="popover"] {
+  min-width: 150px;
+  border-radius: 8px;
+}
+
+div[data-slot="content"] {
+  border-radius: 8px;
+  background-color: $main-gray-800;
+}

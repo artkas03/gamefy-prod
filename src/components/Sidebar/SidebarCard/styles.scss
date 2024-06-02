@@ -1,0 +1,45 @@
+@import '../../../utils/styles/variables.scss';
+
+.sidebar-card {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 12px;
+  gap: 8px;
+  border-radius: 4px;
+  background-color: transparent;
+  text-align: left;
+  transition: all .3s ease;
+
+  &__name {
+    width: 100%;
+    font-size: 16px;
+    line-height: 24px;
+    color: $main-gray-400;
+
+    &--active {
+      color: white;
+    }
+  }
+
+  &__quantity {
+    padding: 8px;
+    border-radius: 4px;
+
+    span {
+      padding: 0;
+    }
+
+    &--active {
+      background-color: $main-primary-600;
+    }
+  }
+
+  &--active {
+    background-color: $main-primary-500;
+  }
+
+  &:hover {
+    background-color: $main-gray-900;
+  }
+}

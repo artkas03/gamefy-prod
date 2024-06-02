@@ -1,0 +1,24 @@
+@import '../../utils/mixins/media-queries.scss';
+
+.game-catalog {
+  --game-catalog-colums: 1;
+  display: grid;
+  grid-template-columns: repeat(var(--game-catalog-colums), 1fr);
+  grid-column-gap: 16px;
+  column-gap: 32px;
+  row-gap: 32px;
+
+  @include tablet {
+    --game-catalog-colums: 3;
+  }
+
+  &--full-width {
+    @include desktop {
+      --game-catalog-colums: 4;
+    }
+  }
+}
+
+.card__skeleton {
+  grid-column: span 1;
+}
