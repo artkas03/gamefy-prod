@@ -1,0 +1,31 @@
+.tertiary-button {
+  transition: all .3s ease;
+  font-family: var(--font-inter);
+  font-size: 16px;
+  padding: 11px 24px;
+  border-radius: 8px;
+  line-height: 24px;
+  font-weight: 700;
+  gap: 8px;
+  background-color: transparent;
+  border: 1px solid transparent;
+
+  border: 1px solid $main-gray-800 !important;
+
+  &:hover {
+    border: 1px solid $main-gray-700 !important;
+  }
+
+  &:active {
+    border: 1px solid $main-gray-600 !important;
+  }
+
+  &:focus {
+    border: 1px solid $main-gray-400 !important;
+  }
+
+  &:disabled {
+    border: 1px solid $main-gray-800 !important;
+    color: $main-gray-700 !important;
+  }
+}
