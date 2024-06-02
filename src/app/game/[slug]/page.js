@@ -18,7 +18,7 @@ async function Gamepage({ params }) {
   const data = await getDataForGamepage(params.slug);
   
   return (
-    <PageComponent data={data} />
+    <PageComponent data={data} slug={params.slug} />
   )
 }
 
