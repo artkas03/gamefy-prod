@@ -1,6 +1,6 @@
 import React from 'react'
-import PageComponent from './PageComponent';
 import helloworld from '@/controllers/helloworld';
+import GamePageComponent from './components/GamePageComponent/GamePageComponent';
 
 const getDataForGamepage = async(slug) => {
   try {
@@ -18,7 +18,7 @@ async function Gamepage({ params }) {
   const data = await getDataForGamepage(params.slug);
   
   return (
-    <PageComponent data={data} slug={params.slug} />
+    <GamePageComponent gameData={data} />
   )
 }
 
