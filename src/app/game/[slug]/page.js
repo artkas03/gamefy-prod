@@ -3,15 +3,15 @@ import GamePageComponent from './components/GamePageComponent/GamePageComponent'
 
 import './styles.scss';
 
-const getDataForGamepage = async(slug) => {
-  try {
-    const data = await helloworld(slug);
+// const getDataForGamepage = async(slug) => {
+//   try {
+//     const data = await helloworld(slug);
 
-    return data;
-  } catch(err) {
-    console.error(err);
-  }
-}
+//     return data;
+//   } catch(err) {
+//     console.error(err);
+//   }
+// }
 
 async function Gamepage({ params }) {
   // const data = await getDataForGamepage(params.slug) || {};
