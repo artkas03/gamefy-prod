@@ -1,6 +1,6 @@
 'use client';
 import React, { useCallback, useContext, useState } from 'react';
-// import logo from '../../../assets/img/logo.png';
+import logo from '../../../assets/img/logo.png';
 
 import './styles.scss';
 import {
@@ -40,7 +40,7 @@ export const HeaderBar = () => {
                 className="header-bar__logo"
                 height={24}
                 width={70}
-                // src={logo?.src}
+                src={logo?.src}
                 alt="logo"
               />
             </Link>

@@ -1,9 +1,7 @@
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import prismaClientInstance from "@/utils/scripts/prismaClientInstance";
 
 const getGames = async() => {
-  return prisma.game.findMany();
+  return prismaClientInstance.game.findMany();
 }
 
 export default getGames;

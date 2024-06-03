@@ -1,9 +1,7 @@
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import prismaClientInstance from "@/utils/scripts/prismaClientInstance";
 
 const getGameBySlug = async(gameSlug) => {
-  return prisma.game.findUnique({
+  return prismaClientInstance.game.findUnique({
     where: {
       slug: gameSlug
     },

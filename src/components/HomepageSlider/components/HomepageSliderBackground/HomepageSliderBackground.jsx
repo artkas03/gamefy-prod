@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { HomepageSliderSlideContent } from '../HomepageSliderSlideContent';
-import image from '@/img/fallback-image.png';
+// import image from '@/img/fallback-image.png';
 
 // import checkIfProduction from '@/utils/scripts/checkIfProduction';
 
@@ -46,7 +46,7 @@ export const HomepageSliderBackground = ({
             key={id}
           >
             <HomepageSliderSlideContent
-              image={image.src} 
+              image={getS3ImageUrl(slug)} 
               gameData={{ slug, ...slideRestProps }}
               isHideContent={isToHideSlidesContent}
             />
