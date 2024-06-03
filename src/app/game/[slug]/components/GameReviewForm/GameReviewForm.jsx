@@ -2,15 +2,16 @@
 import { UserContext } from '@/context/UserContext';
 import React, { useContext, useState } from 'react';
 
-
 import { Button, Textarea } from '@nextui-org/react';
-import { useSession } from 'next-auth/react';
-import axiosInstance from '@/utils/scripts/api';
+// import { useSession } from 'next-auth/react';
+// import axiosInstance from '@/utils/scripts/api';
+
+import './styles.scss';
 
 export const GameReviewForm = ({
   gameSlug = ''
 }) => {
-  const { data: session } = useSession();
+  // const { data: session } = useSession();
   const [value, setValue] = useState('');
 
   const handleOnChange = ({ target }) => {
@@ -21,21 +22,21 @@ export const GameReviewForm = ({
     }
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
 
-    axiosInstance.post('/comments/createComment', {
-      text: value.trim(),
-      userEmail: session?.user.email,
-      gameSlug
-    });
+  //   axiosInstance.post('/comments/createComment', {
+  //     text: value.trim(),
+  //     userEmail: session?.user.email,
+  //     gameSlug
+  //   });
 
-    setValue(() => '');
-  }
+  //   setValue(() => '');
+  // }
 
   return (
     <>
-      {session?.user ? (
+      {false ? (
         <form 
           className="comment-form"
           onSubmit={handleSubmit}

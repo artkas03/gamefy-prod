@@ -2,11 +2,11 @@ import React from 'react'
 import helloworld from '@/controllers/helloworld';
 import GamePageComponent from './components/GamePageComponent/GamePageComponent';
 
+import './styles.scss';
+
 const getDataForGamepage = async(slug) => {
   try {
     const data = await helloworld(slug);
-    
-    console.log(data);
 
     return data;
   } catch(err) {

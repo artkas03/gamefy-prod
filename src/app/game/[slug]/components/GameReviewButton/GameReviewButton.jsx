@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import React from 'react';
 
 export const GameReviewButton = () => {
-  const { data: session } = useSession();
+  // const { data: session } = useSession();
   const router = useRouter();
 
   const handleClick = (e) => {
@@ -21,7 +21,7 @@ export const GameReviewButton = () => {
 
   return (
     <Button onClick={handleClick} className="game__review-score-button primary-button">
-      {session?.user ? 'Add review' : 'Sing in to add a review'}
+      Sing in to add a review
     </Button>
   );
 };

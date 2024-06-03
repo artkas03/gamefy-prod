@@ -2,21 +2,23 @@
 import React from 'react';
 import { GameRequirementItem } from '../GameRequirementItem';
 import { GamePreview } from '../GamePreview';
+import { GameDescription } from '../GameDescription';
+import GameMarkList from '../GameMarkList/GameMarkList';
+import { GameReviewButton } from '../GameReviewButton';
+import { GameReviewForm } from '../GameReviewForm';
+import { GameComments } from '../GameComments';
+import getAverageMark from '@/utils/scripts/getAverageMark';
 
 const defaultGameData = {
-  userScore: {
-    markingRaw: {
-      markingRaw: {
-        1: 0,
-        2: 0,
-        3: 0,
-        4: 0,
-        5: 0,
-      },
-      total: 0,
-    },
+  markingRaw: {
+    1: 0,
+    2: 0,
+    3: 0,
+    4: 0,
+    5: 0,
   },
-};
+  total: 0,
+}
 
 const GamePageComponent = ({ gameData }) => {
   // const [isLoading, setIsLoading] = useState(true);
@@ -34,44 +36,66 @@ const GamePageComponent = ({ gameData }) => {
   // }, [slug]);
 
   // console.log(isLoading, JSON.stringify(gameData));
-  const {
-    requirements
-  } = gameData;
 
-  console.log(gameData);
+  const userScoreToWorkWith = gameData.userScore || defaultGameData;
 
-  const averageGameMark = 0;
+  const averageGameMark = getAverageMark(userScoreToWorkWith);
 
   return (
     <div className="game grid">
-      <GamePreview gameSlug={gameData.slug} gameData={gameData} />
+          {/* <GamePreview gameSlug={gameData?.slug} gameData={gameData} /> */}
 
-      <div className="game__requirements grid">
-        <h3 className="game__requirements-title game__title">
-          System requirements
-        </h3>
+          {/* TODO: Implement slider with more images of the game */}
 
-        <GameRequirementItem title={'Minimum:'} requirements={{
-          additionalNotes: requirements.minimumAdditionalNotes,
-          memory: requirements.minimumMemory,
-          gpu: requirements.minimumGPU,
-          os: requirements.minimumOS,
-          preInfo: requirements.minimumPreInfo,
-          processor: requirements.minimumProcessor,
-          storage: requirements.minimumStorage,
-        }} />
+          {/* <GameDescription
+            descriptionText={gameData?.description}
+            platform={gameData?.platforms}
+            releaseDate={gameData?.releaseDate}
+            company={gameData?.company}
+            genre={gameData?.genres}
+            voice={gameData?.voiceLanguages}
+            subtitles={gameData?.subtitlesLanguages}
+            totalNumberOfMarks={userScoreToWorkWith.total}
+            averageGameMark={averageGameMark}
+          /> */}
 
-        <GameRequirementItem title={'Recommended:'} requirements={{
-          additionalNotes: requirements.recommendedAdditionalNotes,
-          memory: requirements.recommendedMemory,
-          gpu: requirements.recommendedGPU,
-          os: requirements.recommendedOS,
-          preInfo: requirements.recommendedPreInfo,
-          processor: requirements.recommendedProcessor,
-          storage: requirements.recommendedStorage,
-        }} />
-      </div>
-    </div>
+          <div className="game__requirements grid">
+            <h3 className="game__requirements-title game__title">
+              System requirements
+            </h3>
+
+            <GameRequirementItem title={'Minimum:'} requirements={{}} />
+
+            <GameRequirementItem title={'Recommended:'} requirements={{}} />
+          </div>
+
+          {/* TODO: Implement slider of more game content */}
+
+          <div className="game__review grid">
+            <h3 className="game__review-title game__title">Customer reviews</h3>
+
+            <div className="game__review-score">
+              {/* TODO: Fix div aspect ration when the value is 0 */}
+              <h2 className="game__review-score-result">{averageGameMark}</h2>
+              <p className="game__review-score-votes">{userScoreToWorkWith.total} total reviews</p>
+
+              {/* <GameMarkList
+                gameSlug={gameData?.slug}
+                userScoreData={userScoreToWorkWith}
+              /> */}
+
+              <GameReviewButton className="game__review-score-button primary-button" />
+            </div>
+
+            <GameReviewForm gameData />
+
+            <div className="game__review-comments">
+              <GameComments comments={gameData?.comments} />
+            </div>
+          </div>
+
+          {/* TODO: Implement slider with similar games */}
+        </div>
   );
 };
 

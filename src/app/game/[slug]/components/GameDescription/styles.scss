@@ -1,0 +1,153 @@
+@import '../../../../../utils/styles/variables.scss';
+@import '../../../../../utils/mixins/media-queries.scss';
+
+.description {
+  grid-column: 1 / -1;
+  height: 100%;
+
+  &__title {
+    grid-column: 1 / -1;
+  }
+
+  &__text {
+    grid-column: 1 / -1;
+
+    @include tablet {
+      grid-column: 1 / 4;
+    }
+
+    @include desktop {
+      grid-column: 1 / 8;
+    }
+  }
+
+  &__marks {
+    margin-top: 16px;
+    padding: 24px;
+    border-radius: 8px;
+    background-color: $main-gray-800;
+    grid-column: 1 / -1;
+
+    @include tablet {
+      grid-column: 1 / 4;
+      height: fit-content;
+      align-self: end;
+    }
+
+    @include desktop {
+      height: auto;
+      align-self: end;
+      grid-column: 1 / 8;
+      justify-content: space-between;
+      display: flex;
+    }
+  }
+
+  &__mark {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin: 0 auto;
+
+    &-text {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      &-category {
+        color: $main-gray-200;
+        line-height: 20px;
+        font-weight: 400;
+      }
+
+      &-status {
+        line-height: 20px;
+        font-weight: 700;
+      }
+
+      &-votes {
+        font-size: 12px;
+        line-height: 18px;
+        color: $main-gray-400;
+      }
+    }
+
+    &-result {
+      padding: 8px;
+      background-color: $secondary-success-500;
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 44px;
+      letter-spacing: -0.72px;
+      height: fit-content;
+      border-radius: 8px;
+      aspect-ratio: 1;
+
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      flex-direction: column;
+    }
+  }
+
+  &__divider {
+    margin-block: 24px;
+
+    &--vertical {
+      @include desktop {
+        margin-block: 0px;
+        height: auto;
+        width: 1px;
+      }
+    }
+  }
+
+  &__general {
+    grid-column: 1 / -1;
+    padding: 24px;
+    border-radius: 8px;
+    background-color: $main-gray-800;
+    margin-top: 32px;
+
+    &-top {
+      text-align: right;
+    }
+
+    &-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    &-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+
+      &-name {
+        font-size: 14px;
+        line-height: 20px;
+        color: $main-gray-500;
+      }
+
+      &-value {
+        color: white;
+      }
+
+      &--bottom {
+        flex-direction: column;
+      }
+    }
+
+    @include tablet {
+      margin-top: 0;
+      grid-row: 2 / 4;
+      grid-column: 4 / -1;
+    }
+
+    @include desktop {
+      grid-column: 8 / -1;
+    }
+  }
+}

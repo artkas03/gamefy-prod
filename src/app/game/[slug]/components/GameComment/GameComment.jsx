@@ -2,6 +2,7 @@
 import { Avatar, Button } from '@nextui-org/react';
 import React, { useState } from 'react';
 
+import './styles.scss';
 
 // import axiosInstance from '@/utils/scripts/api';
 

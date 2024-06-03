@@ -1,9 +1,8 @@
-import { BREAKPOINTS } from '@/src/appconfig';
 import { Divider } from '@nextui-org/react';
 import React from 'react';
 // import { useBreakpoint } from 'use-breakpoint';
 
-
+import './styles.scss';
 
 export const GameDescription = ({
   descriptionText = '',
