@@ -2,23 +2,30 @@ import React from 'react'
 import GamePageComponent from './components/GamePageComponent/GamePageComponent';
 
 import './styles.scss';
+import axiosInstance from '@/utils/scripts/api';
 
-// const getDataForGamepage = async(slug) => {
-//   try {
-//     const data = await helloworld(slug);
+const useGetGameData = async (slug) => {
+  try {
+    const {
+      data: { gameData },
+    } = await axiosInstance.get(`/games/${slug}`);
 
-//     return data;
-//   } catch(err) {
-//     console.error(err);
-//   }
-// }
+    if (!gameData) {
+      return null;
+    }
+
+    return gameData;
+  } catch (err) {
+    console.error(err);
+    return null;
+  }
+};
 
 async function Gamepage({ params }) {
-  // const data = await getDataForGamepage(params.slug) || {};
+  const data = await useGetGameData(params.slug);
   
   return (
-    // <GamePageComponent gameData={data} />
-    <div>{params.slug}</div>
+    <GamePageComponent gameData={data} />
   )
 }
 

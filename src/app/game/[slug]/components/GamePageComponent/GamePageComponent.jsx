@@ -43,11 +43,11 @@ const GamePageComponent = ({ gameData }) => {
 
   return (
     <div className="game grid">
-          {/* <GamePreview gameSlug={gameData?.slug} gameData={gameData} /> */}
+          <GamePreview gameSlug={gameData?.slug} gameData={gameData} />
 
           {/* TODO: Implement slider with more images of the game */}
 
-          {/* <GameDescription
+          <GameDescription
             descriptionText={gameData?.description}
             platform={gameData?.platforms}
             releaseDate={gameData?.releaseDate}
@@ -57,16 +57,16 @@ const GamePageComponent = ({ gameData }) => {
             subtitles={gameData?.subtitlesLanguages}
             totalNumberOfMarks={userScoreToWorkWith.total}
             averageGameMark={averageGameMark}
-          /> */}
+          />
 
           <div className="game__requirements grid">
             <h3 className="game__requirements-title game__title">
               System requirements
             </h3>
 
-            <GameRequirementItem title={'Minimum:'} requirements={{}} />
+            <GameRequirementItem title={'Minimum:'} requirements={gameData?.requirements.minimum} />
 
-            <GameRequirementItem title={'Recommended:'} requirements={{}} />
+            <GameRequirementItem title={'Recommended:'} requirements={gameData?.requirements.recommended} />
           </div>
 
           {/* TODO: Implement slider of more game content */}
@@ -79,10 +79,10 @@ const GamePageComponent = ({ gameData }) => {
               <h2 className="game__review-score-result">{averageGameMark}</h2>
               <p className="game__review-score-votes">{userScoreToWorkWith.total} total reviews</p>
 
-              {/* <GameMarkList
+              <GameMarkList
                 gameSlug={gameData?.slug}
                 userScoreData={userScoreToWorkWith}
-              /> */}
+              />
 
               <GameReviewButton className="game__review-score-button primary-button" />
             </div>

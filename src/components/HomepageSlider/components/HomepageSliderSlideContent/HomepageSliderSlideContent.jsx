@@ -105,7 +105,7 @@ export const HomepageSliderSlideContent = ({
         <div className="swiper-background__content">
           <div className="swiper-background__wrapper grid">
             <Chip color="primary" className="swiper-background__chip">
-              {''.toLocaleUpperCase()}
+              {genres[0].toLocaleUpperCase()}
             </Chip>
 
             <h3 className="swiper-background__title">{name}</h3>
@@ -158,7 +158,7 @@ export const HomepageSliderSlideContent = ({
 
             <p className="swiper-background__description">{description}</p>
 
-            {/* <ButtonGroup className="swiper-background__buttons">
+            <ButtonGroup className="swiper-background__buttons">
               <Button
                 color="primary"
                 className="swiper-background__button primary-button"
@@ -321,7 +321,7 @@ export const HomepageSliderSlideContent = ({
                   )}
                 </Dropdown>
               )}
-            </ButtonGroup> */}
+            </ButtonGroup>
           </div>
         </div>
       )}
