@@ -1,4 +1,5 @@
-import createComment from "controllers/comments/createComment";
+
+import createComment from "@/src/controllers/comments/createComment";
 import { NextResponse } from "next/server";
 
 export async function POST(req) {

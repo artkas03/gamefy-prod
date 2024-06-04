@@ -1,4 +1,5 @@
-import createGenres from "controllers/gameGenres/createGenres";
+
+import genresCreate from "@/src/controllers/gameGenres/createGenres";
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
@@ -6,7 +7,7 @@ export async function POST(req) {
   const preparedGenres = data.map(({ genre }) => ({ genre }))
 
   try {
-    const response = await createGenres(preparedGenres);
+    const response = await genresCreate(preparedGenres);
 
     return NextResponse.json({ response }, { status: 200 });
   } catch (err) {

@@ -1,4 +1,5 @@
-import createCompanies from "controllers/companies/createCompanies";
+
+import createCompanies from "@/src/controllers/companies/createCompanies";
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
