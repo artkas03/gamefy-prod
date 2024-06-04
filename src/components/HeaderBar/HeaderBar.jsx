@@ -16,13 +16,13 @@ import { useRouter } from 'next/navigation';
 import { SidebarBurgerMenuButton } from '../Sidebar/SidebarBurgerMenuButton';
 import Link from 'next/link';
 import { userContextMenu } from 'appconfig';
-// import { signOut, useSession } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 
 export const HeaderBar = () => {
   const [isSearchActive, setIsSearchActive] = useState(false);
   const router = useRouter();
 
-  // const { data: session } = useSession();
+  const { data: session } = useSession();
 
   const handleSearchClose = useCallback(() => setIsSearchActive(false), []);
 
@@ -75,7 +75,7 @@ export const HeaderBar = () => {
                 </svg>
               </Button>
 
-              {false ? (
+              {session?.user ? (
                 <>
                   <SidebarBurgerMenuButton shouldDissapearFrom={'tablet'} />
 
