@@ -1,4 +1,5 @@
-import getGameBySlug from "@/services/games/getGameBySlug";
+
+import getGameBySlug from "@/src/services/games/getGameBySlug";
 import formatUserScore from "@/utils/scripts/formatUserScore";
 import getDefaultUserScore from "@/utils/scripts/getDefaultUserScore";
 

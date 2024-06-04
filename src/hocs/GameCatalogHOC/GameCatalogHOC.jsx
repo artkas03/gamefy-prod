@@ -8,12 +8,12 @@ import { SidebarDesktop } from '@/components/Sidebar/SidebarDesktop';
 import { Select, SelectItem, Pagination } from '@nextui-org/react';
 import { SidebarBurgerMenuButton } from '@/components/Sidebar/SidebarBurgerMenuButton';
 import useBreakpoint from 'use-breakpoint';
-// import axiosInstance from '@/utils/scripts/api';
-// import { SidebarContext } from '@/context/SidebarContext';
+import { SidebarContext } from '@/context/SidebarContext';
 import { HorizonralMenu } from '@/components/HorizonralMenu/HorizonralMenu';
 // import { useSession } from 'next-auth/react';
 import collectionListsKeys from '@/utils/scripts/collectionListsKeys';
-import { BREAKPOINTS, GAMES_IN_PAGE } from 'appconfig';
+import { BREAKPOINTS, GAMES_IN_PAGE } from 'appconfig'; 
+import axiosInstance from '@/utils/scripts/api';
 
 // const sortOptions = [
 //   "Name",
@@ -63,71 +63,66 @@ export const GameCatalogHOC = ({
   const [pageGames, setPageGames] = useState(gamesToShow || []);
   const [isLoading, setIsLoading] = useState(false);
   const [horizonralMenuActiveList, setHorizonralMenuActiveList] = useState(userData ? Object.keys(collectionListsKeys)[0] : '');
-  // const { 
-  //   activeGenre,
-  //   setActiveGenre,
-  //   gamesLength,
-  //   setGamesLength
-  // } = useContext(SidebarContext);
-
-  const activeGenre = '';
-  const setActiveGenre = () => {};
-  const gamesLength = 0;
-  const setGamesLength = useCallback(() => {}, []);
+  const { 
+    activeGenre,
+    setActiveGenre,
+    gamesLength,
+    setGamesLength
+  } = useContext(SidebarContext);
 
   const preparedCollectionData = getPreparedCollectionData(userData, isShowHorizontalMenu);
 
   const pagesNumber = useMemo(() => Math.ceil(gamesLength / GAMES_IN_PAGE), [gamesLength]);
 
-  // useEffect(() => {
-  //   if (!horizonralMenuActiveList) return;
+  useEffect(() => {
+    if (!horizonralMenuActiveList) return;
 
-  //   const startIndex = (page - 1) * GAMES_IN_PAGE;
-  //   const getIdsArray = userData[horizonralMenuActiveList].slice(startIndex, startIndex + GAMES_IN_PAGE);
-  //   setGamesLength(userData[horizonralMenuActiveList].length);
+    const startIndex = (page - 1) * GAMES_IN_PAGE;
+    const getIdsArray = userData[horizonralMenuActiveList].slice(startIndex, startIndex + GAMES_IN_PAGE);
+    setGamesLength(userData[horizonralMenuActiveList].length);
 
-  //   axiosInstance.get(`/games/getGamesById?ids=${getIdsArray.join(',')}`)
-  //     .then((respose) => setPageGames(respose.data.games));
-  // }, [horizonralMenuActiveList, page, setGamesLength, userData]);
+    axiosInstance.get(`/games/getGamesById?ids=${getIdsArray.join(',')}`)
+      .then((respose) => setPageGames(respose.data.games));
+  }, [horizonralMenuActiveList, page, setGamesLength, userData]);
 
-  // useEffect(() => {
-  //   if (horizonralMenuActiveList) return;
+  useEffect(() => {
+    if (horizonralMenuActiveList) return;
 
-  //   setIsLoading(true);
+    setIsLoading(true);
 
-  //   axiosInstance.get(`/getGamesLength?query=${fetchWithQuery}`)
-  //     .then((response) => setGamesLength(response.data.gamesQuantity))
-  //     .finally(() => setIsLoading(false));
-  // }, [fetchWithQuery, setGamesLength, horizonralMenuActiveList])
+    axiosInstance.get(`/getGamesLength?query=${fetchWithQuery}`)
+      .then((response) => setGamesLength(response.data.gamesQuantity))
+      .finally(() => setIsLoading(false));
+  }, [fetchWithQuery, setGamesLength, horizonralMenuActiveList])
 
-  // useEffect(() => {
-  //   if (horizonralMenuActiveList) return;
+  useEffect(() => {
+    if (horizonralMenuActiveList) return;
 
-  //   const fetchUrlSearchParams = new URLSearchParams();
+    const fetchUrlSearchParams = new URLSearchParams();
 
-  //   if (page) {
-  //     fetchUrlSearchParams.append('page', page);
-  //   }
+    if (page) {
+      fetchUrlSearchParams.append('page', page);
+    }
 
-  //   if (fetchWithQuery) {
-  //     fetchUrlSearchParams.append('query', fetchWithQuery);
-  //   }
+    if (fetchWithQuery) {
+      fetchUrlSearchParams.append('query', fetchWithQuery);
+    }
 
-  //   if (activeGenre) {
-  //     fetchUrlSearchParams.append('activeGenre', activeGenre);
-    // }
+    if (activeGenre) {
+      fetchUrlSearchParams.append('activeGenre', activeGenre);
+    }
 
     // if (session?.user) {
     //   fetchUrlSearchParams.append('userEmail', session.user.email);
     // }
 
-  //   const urlWithParams = `/games/getGamesForCatalogPage?${fetchUrlSearchParams.toString()}`;
-  //   axiosInstance.get(urlWithParams)
-  //     .then((response) => {
-  //       setPageGames(response.data.games)
-  //     })
-  //     .catch((err) => console.error(err));
-  // }, [page, fetchWithQuery, activeGenre, horizonralMenuActiveList]);
+    const urlWithParams = `/games/getGamesForCatalogPage?${fetchUrlSearchParams.toString()}`;
+    axiosInstance.get(urlWithParams)
+      .then((response) => {
+        setPageGames(response.data.games)
+      })
+      .catch((err) => console.error(err));
+  }, [page, fetchWithQuery, activeGenre, horizonralMenuActiveList]);
 
   const isToShowNoResultMessage = gamesToShow && !gamesToShow.length || !pageGames.length;
 

@@ -26,7 +26,6 @@ export const HomepageSliderSlideContent = ({
   gameData,
   isHideContent = false,
 }) => {
-  console.log('Slider data: ', gameData);
   // TODO: Rewrite hadnling adding to the user collection
   const [addedToCollection, setAddedToCollection] = useState('');
 

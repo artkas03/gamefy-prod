@@ -1,5 +1,4 @@
 const getAverageMark = (markList) => {
-  console.log('LIST: ', markList)
   const {
     markingRaw,
     total

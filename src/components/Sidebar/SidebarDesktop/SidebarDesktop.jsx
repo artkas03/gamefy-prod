@@ -4,19 +4,16 @@ import React, { useContext, useState, useEffect, useMemo } from 'react';
 import './styles.scss';
 import { Divider } from '@nextui-org/react';
 import { SidebarCard } from '../SidebarCard';
-// import { SidebarContext } from '@/context/SidebarContext';
-// import axiosInstance from '@/utils/scripts/api';
+import { SidebarContext } from '@/context/SidebarContext';
+import axiosInstance from '@/utils/scripts/api';
 
-// const getGenres = async () => axiosInstance.get('/gameGenres/getGenres');
+const getGenres = async () => axiosInstance.get('/gameGenres/getGenres');
 
 export const SidebarDesktop = ({
   title,
 }) => {
   const [genres, setGenres] = useState([]);
-  // const { activeGenre, setActiveGenre, setGamesLength } = useContext(SidebarContext);
-  const activeGenre = '';
-  const setActiveGenre = () => {};
-  const setGamesLength = () => {};
+  const { activeGenre, setActiveGenre, setGamesLength } = useContext(SidebarContext);
 
   const totalGamesNumber = useMemo(() => {
     const allGamesIds = genres?.reduce((acc, genre) => [...acc, ...genre.games.map(({ gameId}) => gameId)], []);
@@ -31,17 +28,17 @@ export const SidebarDesktop = ({
     setGamesLength(gamesInGenreQuantity);
   };
 
-  // useEffect(() => {
-  //   getGenres()
-  //     .then((response) => {
-  //       const newGenres = [...response.data.genres];
+  useEffect(() => {
+    getGenres()
+      .then((response) => {
+        const newGenres = [...response.data.genres];
 
-  //       setGenres(newGenres);
-  //     })
-  //     .catch((err) => {
-  //       console.error(err);
-  //     });
-  // }, []);
+        setGenres(newGenres);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
 
   return (
     <div className="desktop-sidebar">

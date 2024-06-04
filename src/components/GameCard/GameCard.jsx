@@ -84,7 +84,7 @@ export const GameCard = memo(
               width={732}
               height={430}
               objectfit="contain"
-              // src={getS3ImageUrl(slug, 430)}
+              src={getS3ImageUrl(slug, 430)}
               alt="ALT"
               fetchPriority='low'
             />
@@ -92,7 +92,7 @@ export const GameCard = memo(
 
           <div className="game-card__on-image">
             <Chip color="primary" className="game-card__chip">
-              {''.toLocaleUpperCase()}
+              {genres[0].toLocaleUpperCase()}
             </Chip>
 
             {false && (
