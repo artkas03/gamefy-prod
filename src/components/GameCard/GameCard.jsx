@@ -12,17 +12,13 @@ import {
   Image
 } from '@nextui-org/react';
 
-// import cardImage from '@/img/form-swiper6.png';
-// import logo from '@/img/company-logo1.png';
 import getS3ImageUrl from '@/utils/scripts/getS3ImageUrl';
-// import { useSession } from 'next-auth/react';
-// import axiosInstance from '@/utils/scripts/api';
-// import checkIfProduction from '@/utils/scripts/checkIfProduction';
-// import getAverageMark from '@/utils/scripts/getAverageMark';
-// import collectionListsKeys from '@/utils/scripts/collectionListsKeys';
+import { useSession } from 'next-auth/react';
+import axiosInstance from '@/utils/scripts/api';
+import getAverageMark from '@/utils/scripts/getAverageMark';
+import collectionListsKeys from '@/utils/scripts/collectionListsKeys';
 import cn from 'classnames';
 import Link from 'next/link';
-import getAverageMark from '@/utils/scripts/getAverageMark';
 
 export const GameCard = memo(
   ({
@@ -34,47 +30,54 @@ export const GameCard = memo(
     userCollectionList,
     ...restProps
   }) => {
-    // const { data: session } = useSession();
+    const { data: session } = useSession();
     const [addedToCollection, setAddedToCollection] =
-      useState(userCollectionList);
+      useState(userCollectionList !== null ? userCollectionList[0] : '');
 
-    // const handleAddToCollection = async (newCollection) => {
-    //   const currentCollection = addedToCollection;
-    //   setAddedToCollection(newCollection);
+    const handleAddToCollection = async (newCollection) => {
+      const currentCollection = addedToCollection;
+      setAddedToCollection(newCollection);
 
-    //   axiosInstance
-    //     .post('/userCollections/addGameToCollection', {
-    //       userEmail: session?.user.email,
-    //       gameSlug: slug,
-    //       oldCollection: currentCollection,
-    //       newCollection,
-    //     })
-    //     .then((response) => setAddedToCollection(response.data.newCollection))
-    //     .catch((err) => {
-    //       setAddedToCollection(currentCollection);
-    //       console.error(err);
-    //     });
-    // };
+      console.log('handleAddToCollection: ', {
+        userEmail: session?.user.email,
+        gameSlug: slug,
+        oldCollection: currentCollection,
+        newCollection,
+      });
 
-    // const handleDeleteFromCollection = () => {
-    //   if (!addedToCollection) {
-    //     return;
-    //   }
+      axiosInstance
+        .post('/userCollections/addGameToCollection', {
+          userEmail: session?.user.email,
+          gameSlug: slug,
+          oldCollection: currentCollection,
+          newCollection,
+        })
+        .then((response) => setAddedToCollection(response.data.newCollection))
+        .catch((err) => {
+          setAddedToCollection(currentCollection);
+          console.error(err);
+        });
+    };
 
-    //   const currentCollection = addedToCollection;
-    //   setAddedToCollection('');
+    const handleDeleteFromCollection = () => {
+      if (!addedToCollection) {
+        return;
+      }
 
-    //   axiosInstance
-    //     .patch('/userCollections/deleteGameFromCollection', {
-    //       userEmail: session?.user.email,
-    //       gameSlug: slug,
-    //       currentCollection,
-    //     })
-    //     .catch((err) => {
-    //       setAddedToCollection(currentCollection);
-    //       console.error(err);
-    //     });
-    // };
+      const currentCollection = addedToCollection;
+      setAddedToCollection('');
+
+      axiosInstance
+        .patch('/userCollections/deleteGameFromCollection', {
+          userEmail: session?.user.email,
+          gameSlug: slug,
+          currentCollection,
+        })
+        .catch((err) => {
+          setAddedToCollection(currentCollection);
+          console.error(err);
+        });
+    };
 
     return (
       <div className="game-card">
@@ -96,7 +99,7 @@ export const GameCard = memo(
               {genres[0].toLocaleUpperCase()}
             </Chip>
 
-            {false && (
+            {session?.user && (
               <Dropdown>
                 <DropdownTrigger>
                   <Button className="game-card__button secondary-button">
@@ -145,12 +148,12 @@ export const GameCard = memo(
                 <DropdownMenu>
                   {Object.entries(collectionListsKeys).map(([key, value]) => (
                     <DropdownItem
-                      onClick={() => {}}
+                      onClick={() => handleAddToCollection(key)}
                       className={cn('game-card__dropdown-item', {
-                        'game-card__dropdown-item--active':
-                          key === addedToCollection,
+                        'game-card__dropdown-item--active': key === addedToCollection,
                       })}
-                      key={key}>
+                      key={key}
+                    >
                       {value}
 
                       <div className="game-card__dropdown-item-icon">
@@ -198,7 +201,7 @@ export const GameCard = memo(
                   ))}
 
                   <DropdownItem
-                    onClick={() => {}}
+                    onClick={handleDeleteFromCollection}
                     className="game-card__dropdown-item game-card__dropdown-item--delete">
                     {'Delete'}
 

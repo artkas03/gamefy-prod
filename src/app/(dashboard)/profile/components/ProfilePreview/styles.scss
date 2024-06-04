@@ -1,0 +1,36 @@
+@import '../../../../../utils/styles/variables.scss';
+@import '../../../../../utils/mixins/media-queries.scss';
+
+.profile-preview {
+  grid-column: 1 / -1;
+  background-color: $main-gray-800;
+  height: fit-content;
+  z-index: 10000;
+  padding: 16px;
+  border-radius: 8px;
+
+  margin-top: -130px;
+
+  &__avatar {
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+  }
+
+  &__username {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+  }
+
+  @include tablet {
+    grid-column: 2 / -2;
+    padding: 24px;
+  }
+
+  @include desktop {
+    grid-column: 1 / 5;
+  }
+}

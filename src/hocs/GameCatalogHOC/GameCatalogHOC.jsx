@@ -10,7 +10,7 @@ import { SidebarBurgerMenuButton } from '@/components/Sidebar/SidebarBurgerMenuB
 import useBreakpoint from 'use-breakpoint';
 import { SidebarContext } from '@/context/SidebarContext';
 import { HorizonralMenu } from '@/components/HorizonralMenu/HorizonralMenu';
-// import { useSession } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 import collectionListsKeys from '@/utils/scripts/collectionListsKeys';
 import { BREAKPOINTS, GAMES_IN_PAGE } from 'appconfig'; 
 import axiosInstance from '@/utils/scripts/api';
@@ -57,7 +57,7 @@ export const GameCatalogHOC = ({
   isCatalogFullOnDesktop = false,
   fetchWithQuery = '',
 }) => {
-  // const { data: session } = useSession();
+  const { data: session } = useSession();
   const { breakpoint } = useBreakpoint(BREAKPOINTS, 'mobile');
   const [page, setPage] = useState(1);
   const [pageGames, setPageGames] = useState(gamesToShow || []);
@@ -73,6 +73,10 @@ export const GameCatalogHOC = ({
   const preparedCollectionData = getPreparedCollectionData(userData, isShowHorizontalMenu);
 
   const pagesNumber = useMemo(() => Math.ceil(gamesLength / GAMES_IN_PAGE), [gamesLength]);
+
+  useEffect(() => {
+    setPage(1);
+  }, [activeGenre]);
 
   useEffect(() => {
     if (!horizonralMenuActiveList) return;
@@ -112,9 +116,9 @@ export const GameCatalogHOC = ({
       fetchUrlSearchParams.append('activeGenre', activeGenre);
     }
 
-    // if (session?.user) {
-    //   fetchUrlSearchParams.append('userEmail', session.user.email);
-    // }
+    if (session?.user) {
+      fetchUrlSearchParams.append('userEmail', session.user.email);
+    }
 
     const urlWithParams = `/games/getGamesForCatalogPage?${fetchUrlSearchParams.toString()}`;
     axiosInstance.get(urlWithParams)
@@ -122,7 +126,7 @@ export const GameCatalogHOC = ({
         setPageGames(response.data.games)
       })
       .catch((err) => console.error(err));
-  }, [page, fetchWithQuery, activeGenre, horizonralMenuActiveList]);
+  }, [page, fetchWithQuery, activeGenre, horizonralMenuActiveList, session?.user]);
 
   const isToShowNoResultMessage = gamesToShow && !gamesToShow.length || !pageGames.length;
 
@@ -220,6 +224,7 @@ export const GameCatalogHOC = ({
           <GameCatalog
             games={gamesToShow || pageGames}
             isFullWidthOnDesktop={isCatalogFullOnDesktop}
+            userCollection={userData}
           />
         )}
       </div>

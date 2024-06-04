@@ -12,8 +12,6 @@ export const authOptions = {
       async authorize(creds) {
         const user = await getUser(creds.email);
 
-        console.log('Before check: ', user)
-
         if (!user) {
           return null;
         }

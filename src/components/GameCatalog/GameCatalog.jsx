@@ -4,6 +4,7 @@ import cn from 'classnames';
 import './styles.scss';
 import dynamic from 'next/dynamic';
 import { Card, Skeleton } from '@nextui-org/react';
+import getCollectionGameIn from '@/utils/scripts/getCollectionGameIn';
 
 const GameCardDynamic = dynamic(
   () => import('../GameCard').then((mod) => mod.GameCard),
@@ -32,18 +33,20 @@ const GameCardDynamic = dynamic(
 export const GameCatalog = ({
   games,
   isFullWidthOnDesktop = false,
-  isLoading
+  isLoading,
+  userCollection
 }) => {
   return (
     <div className={cn("game-catalog", {
       "game-catalog--full-width": isFullWidthOnDesktop,
     })}>
       {games.map(({ id, ...game }) => (
-        <GameCardDynamic
-          key={id}
-          {...game}
-        />
-      ))}
+          <GameCardDynamic
+            key={id}
+            userCollectionList={getCollectionGameIn(id, userCollection)}
+            {...game}
+          />
+        ))}
     </div>
   )
 }

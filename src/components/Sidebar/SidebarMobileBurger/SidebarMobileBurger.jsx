@@ -9,7 +9,7 @@ import axiosInstance from '@/utils/scripts/api';
 
 const getGenres = async () => axiosInstance.get('/gameGenres/getGenres');
 
-export const SidebarBurger = () => {
+export const SidebarMobileBurger = () => {
   const [genres, setGenres] = useState([]);
   const { 
     activeGenre, 
@@ -50,7 +50,7 @@ export const SidebarBurger = () => {
   }, []);
 
   return (
-    <div id="burger" ref={burgerRef} className="burger grid">
+    <div id="burger-mobile" ref={burgerRef} className="burger grid burger--opened">
       <div className="burger__header">
         <h3 className="burger__title">Categories</h3>
 

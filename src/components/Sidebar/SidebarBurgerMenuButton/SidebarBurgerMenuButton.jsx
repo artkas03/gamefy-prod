@@ -11,10 +11,13 @@ const resolution = {
 
 export const SidebarBurgerMenuButton = ({
   shouldDissapearFrom,
+  burgerName = '',
 }) => {
   const handleBurgerMenuOpen = () => {
     document.body.classList.add('body--overflow-hidden');
-    const sidebar = document.getElementById('burger');
+    const burgerMenuName = `burger${burgerName ? `-${burgerName}` : ''}`;
+    console.log(burgerMenuName);
+    const sidebar = document.getElementById(burgerMenuName);
 
     sidebar.style.top = window.scrollY + 'px';
     sidebar.classList.add('burger--opened');

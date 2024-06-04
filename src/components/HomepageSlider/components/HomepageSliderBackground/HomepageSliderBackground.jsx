@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { HomepageSliderSlideContent } from '../HomepageSliderSlideContent';
-// import image from '@/img/fallback-image.png';
+import image from '@/img/fallback-image.png';
 
 // import checkIfProduction from '@/utils/scripts/checkIfProduction';
 
@@ -15,6 +15,7 @@ export const HomepageSliderBackground = ({
   activeSlideId,
   onSwiperSlide = () => {},
   isToHideSlidesContent = false,
+  isUseLocaleImages = false,
   ...restProps
 }) => {
   const [swiper, setSwiper] = useState();
@@ -46,7 +47,7 @@ export const HomepageSliderBackground = ({
             key={id}
           >
             <HomepageSliderSlideContent
-              image={getS3ImageUrl(slug)} 
+              image={isUseLocaleImages ? slideRestProps.imageUrl : getS3ImageUrl(slug)} 
               gameData={{ slug, ...slideRestProps }}
               isHideContent={isToHideSlidesContent}
             />

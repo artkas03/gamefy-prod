@@ -77,7 +77,10 @@ export const HeaderBar = () => {
 
               {session?.user ? (
                 <>
-                  <SidebarBurgerMenuButton shouldDissapearFrom={'tablet'} />
+                  <SidebarBurgerMenuButton
+                    shouldDissapearFrom={'tablet'}
+                    burgerName='mobile'
+                  />
 
                   {/* <Button className="header-bar__search-button header-bar__search-notifications secondary-button">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

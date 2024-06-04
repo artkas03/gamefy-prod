@@ -14,11 +14,11 @@ import {
   DropdownMenu,
   DropdownTrigger,
 } from '@nextui-org/react';
-// import { useSession } from 'next-auth/react';
-// import getAverateMark from '@/utils/scripts/getAverageMark';
+import { useSession } from 'next-auth/react';
+import getAverateMark from '@/utils/scripts/getAverageMark';
 import collectionListsKeys from '@/utils/scripts/collectionListsKeys';
 import cn from 'classnames';
-// import axiosInstance from '@/utils/scripts/api';
+import axiosInstance from '@/utils/scripts/api';
 import { useRouter } from 'next/navigation';
 
 export const HomepageSliderSlideContent = ({
@@ -29,7 +29,7 @@ export const HomepageSliderSlideContent = ({
   // TODO: Rewrite hadnling adding to the user collection
   const [addedToCollection, setAddedToCollection] = useState('');
 
-  // const { data: session } = useSession();
+  const { data: session } = useSession();
 
   const router = useRouter();
 
@@ -59,42 +59,42 @@ export const HomepageSliderSlideContent = ({
   const genre = genres[0] || '';
   const totalMark = 0;
 
-  // const handleAddToCollection = async (newCollection) => {
-  //   const currentCollection = addedToCollection;
-  //   setAddedToCollection(newCollection);
+  const handleAddToCollection = async (newCollection) => {
+    const currentCollection = addedToCollection;
+    setAddedToCollection(newCollection);
 
-  //   axiosInstance
-  //     .post('/userCollections/addGameToCollection', {
-  //       userEmail: session?.user.email,
-  //       gameSlug: gameData.slug,
-  //       oldCollection: currentCollection,
-  //       newCollection,
-  //     })
-  //     .then((response) => setAddedToCollection(response.data.newCollection))
-  //     .catch((err) => {
-  //       setAddedToCollection(currentCollection);
-  //       console.error(err);
-  //     });
-  // };
+    axiosInstance
+      .post('/userCollections/addGameToCollection', {
+        userEmail: session?.user.email,
+        gameSlug: gameData.slug,
+        oldCollection: currentCollection,
+        newCollection,
+      })
+      .then((response) => setAddedToCollection(response.data.newCollection))
+      .catch((err) => {
+        setAddedToCollection(currentCollection);
+        console.error(err);
+      });
+  };
 
-  // const handleDeleteFromCollection = () => {
-  //   if (!addedToCollection) {
-  //     return;
-  //   }
+  const handleDeleteFromCollection = () => {
+    if (!addedToCollection) {
+      return;
+    }
 
-  //   const currentCollection = addedToCollection;
+    const currentCollection = addedToCollection;
 
-  //   axiosInstance
-  //     .patch('/userCollections/deleteGameFromCollection', {
-  //       userEmail: session?.user.email,
-  //       gameSlug: gameData.slug,
-  //       currentCollection,
-  //     })
-  //     .catch((err) => {
-  //       setAddedToCollection(currentCollection);
-  //       console.error(err);
-  //     });
-  // };
+    axiosInstance
+      .patch('/userCollections/deleteGameFromCollection', {
+        userEmail: session?.user.email,
+        gameSlug: gameData.slug,
+        currentCollection,
+      })
+      .catch((err) => {
+        setAddedToCollection(currentCollection);
+        console.error(err);
+      });
+  };
 
   return (
     <>
@@ -162,10 +162,10 @@ export const HomepageSliderSlideContent = ({
                 color="primary"
                 className="swiper-background__button primary-button"
                 startContent={<p>Explore</p>}
-                onClick={() => router.replace(`/${gameData.slug}`)}
+                onClick={() => router.replace(`/game/${gameData.slug}`)}
               />
 
-              {!false ? (
+              {!session?.user ? (
                 <Button
                   className="swiper-background__button secondary-button"
                   onClick={() => router.replace('/authorization')}
@@ -211,7 +211,7 @@ export const HomepageSliderSlideContent = ({
                     />
                   </DropdownTrigger>
 
-                  {false && (
+                  {session?.user && (
                     <DropdownMenu>
                       {Object.entries(collectionListsKeys).map(
                         ([key, value]) => (

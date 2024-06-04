@@ -3,6 +3,7 @@ import { HomepageSlider } from '@/components/HomepageSlider';
 import { SidebarBurger } from '@/components/Sidebar/SidebarBurger';
 import { GameCatalogHOC } from '@/hocs/GameCatalogHOC';
 import { HeaderBar } from '@/components/HeaderBar';
+import { SidebarMobileBurger } from '@/components/Sidebar/SidebarMobileBurger';
 
 export default async function Home() {
   return (
@@ -14,10 +15,12 @@ export default async function Home() {
           <GameCatalogHOC title={'Games'} />
         </div>
 
-        <SidebarBurger />
         <Footer />
         <HeaderBar />
       </div>
+
+      <SidebarBurger />
+      <SidebarMobileBurger />
     </main>
   );
 }

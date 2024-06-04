@@ -10,7 +10,7 @@ const DashboardLayout = ({
     <div className="grid general-wrapper">
       {children}
 
-      <SidebarBurger />
+      
       <Footer />
       <HeaderBar />
     </div>
