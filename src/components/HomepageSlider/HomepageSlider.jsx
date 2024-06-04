@@ -5,14 +5,14 @@ import './styles.scss';
 import axiosInstance from '@/utils/scripts/api';
 import { Skeleton } from '@nextui-org/react';
 import dynamic from 'next/dynamic';
-// import { HomepageSliderBackground } from './components/HomepageSliderBackground';
+import { HomepageSliderBackground } from './components/HomepageSliderBackground';
 
-const HomepageSliderBackgroundDynamic = dynamic(
-  () => import('./components/HomepageSliderBackground').then((mod) => mod.HomepageSliderBackground), 
-  {
-    loading: () => <Skeleton className="w-[100%] h-[700px]" />
-  }
-);
+// const HomepageSliderBackgroundDynamic = dynamic(
+//   () => import('./components/HomepageSliderBackground').then((mod) => mod.HomepageSliderBackground), 
+//   {
+//     loading: () => <Skeleton className="w-[100%] h-[700px]" />
+//   }
+// );
 
 const HomepageSliderControllerDynamic = dynamic(
   () => import('./components/HomepageSliderController').then((mod) => mod.HomepageSliderController), 
@@ -21,7 +21,7 @@ const HomepageSliderControllerDynamic = dynamic(
   }
 );
 
-const gamesIdsInSlider = [48, 10, 4, 35];
+const gamesIdsInSlider = [48, 10, 4, 35, 19];
 
 export const HomepageSlider = ({
   isRenderSliderController = true,
@@ -43,7 +43,7 @@ export const HomepageSlider = ({
   return (
     <div className="homepage-swiper">
       {isRenderSliderBackground &&(
-        <HomepageSliderBackgroundDynamic
+        <HomepageSliderBackground
           images={gamesGata}
           allowTouchMove={false}
           activeSlideId={activeSlideId}
