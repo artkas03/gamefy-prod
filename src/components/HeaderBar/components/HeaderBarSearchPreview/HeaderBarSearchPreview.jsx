@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
 import './styles.scss';
-// import axiosInstance from '@/utils/scripts/api';
 import Link from 'next/link';
 import { Button, Divider } from '@nextui-org/react';
 import { useRouter } from 'next/navigation';
+import axiosInstance from '@/utils/scripts/api';
 
 const HeaderBarSearchPreview = ({
   searchValue,
@@ -14,12 +14,12 @@ const HeaderBarSearchPreview = ({
   const [gamesToShow, setGamesToShow] = useState([]);
   const router = useRouter();
 
-  // useEffect(() => {
-  //   axiosInstance
-  //     .get(`/games/getGamesForSearch?query=${searchValue}`)
-  //     .then((response) => setGamesToShow(response.data.games))
-  //     .catch(console.error);
-  // }, [searchValue]);
+  useEffect(() => {
+    axiosInstance
+      .get(`/games/getGamesForSearch?query=${searchValue}`)
+      .then((response) => setGamesToShow(response.data.games))
+      .catch(console.error);
+  }, [searchValue]);
 
   const handleSearchForClick = () => {
     handleLinkOnClick();
