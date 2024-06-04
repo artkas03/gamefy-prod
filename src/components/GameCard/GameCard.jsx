@@ -22,6 +22,7 @@ import getS3ImageUrl from '@/utils/scripts/getS3ImageUrl';
 // import collectionListsKeys from '@/utils/scripts/collectionListsKeys';
 import cn from 'classnames';
 import Link from 'next/link';
+import getAverageMark from '@/utils/scripts/getAverageMark';
 
 export const GameCard = memo(
   ({
@@ -284,7 +285,7 @@ export const GameCard = memo(
                 </defs>
               </svg>
 
-              {/* <p>{getAverageMark(userScore)}</p> */}
+              <p>{getAverageMark(userScore)}</p>
             </div>
           </div>
         </div>

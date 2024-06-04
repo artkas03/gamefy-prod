@@ -1,0 +1,63 @@
+@import '../../../utils/styles/variables.scss';
+@import '../../../utils/mixins/media-queries.scss';
+
+.reg {
+  grid-column: 1 / -1;
+
+  &__wrapper {
+    padding-inline: 16px;
+    height: auto;
+  }
+
+  &__logo {
+    display: none;
+
+    @include desktop {
+      display: block;
+      padding-top: 32px;
+    }
+  }
+
+  &__slider {
+    grid-column: 1 / -1;
+
+    @include desktop {
+      grid-column: 7 / -1;
+    }
+  }
+
+  &__inputgroup {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 56px;
+  }
+
+  &__input {
+    &-toggler {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    &-description {
+      display: block;
+      margin-top: 4px;
+      text-align: right;
+      font-size: 12px;
+      line-height: 18px;
+      color: $main-gray-400;
+    }
+  }
+
+  @include tablet {
+    grid-column: 2 / -2;
+  }
+
+  @include desktop {
+    grid-row: 1;
+    grid-column: 1 / 7;
+    position: relative;
+    height: 100vh;
+  }
+}
