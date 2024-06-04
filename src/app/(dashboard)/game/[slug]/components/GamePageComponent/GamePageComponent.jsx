@@ -1,11 +1,11 @@
 'use client';
 import React from 'react';
-import { GameRequirementItem } from '../../../../../game/[slug]/components/GameRequirementItem';
-import { GamePreview } from '../../../../../game/[slug]/components/GamePreview';
+import { GameRequirementItem } from '../GameRequirementItem';
+import { GamePreview } from '../GamePreview';
 import { GameDescription } from '../GameDescription';
 import GameMarkList from '../GameMarkList/GameMarkList';
-import { GameReviewButton } from '../../../../../game/[slug]/components/GameReviewButton';
-import { GameReviewForm } from '../../../../../game/[slug]/components/GameReviewForm';
+import { GameReviewButton } from '../GameReviewButton';
+import { GameReviewForm } from '../GameReviewForm';
 import { GameComments } from '../GameComments';
 import getAverageMark from '@/utils/scripts/getAverageMark';
 

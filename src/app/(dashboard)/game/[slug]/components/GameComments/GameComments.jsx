@@ -1,8 +1,7 @@
 import React from 'react';
 
-import { GameComment } from '../GameComment';
-
 import './styles.scss';
+import { GameComment } from '../GameComment/GameComment';
 
 export const GameComments = ({
   comments = []
