@@ -10,27 +10,21 @@ export const authOptions = {
       credentials: {},
 
       async authorize(creds) {
-        try {
-          const user = await getUser(creds.email);
+        const user = await getUser(creds.email);
 
-          console.log('Before check: ', user)
-  
-          if (!user) {
-            return null;
-          }
-  
-          const isPasswordEquals = bcryptjs.compareSync(creds.password, user.password);
-  
-          if (!isPasswordEquals) {
-            return null;
-          }
+        console.log('Before check: ', user)
 
-          console.log('USER: ', user);
-  
-          return user;
-        } catch(err) {
-          console.error('ERROR: ', err);
+        if (!user) {
+          return null;
         }
+
+        const isPasswordEquals = bcryptjs.compareSync(creds.password, user.password);
+
+        if (!isPasswordEquals) {
+          return null;
+        }
+
+        return user;
       }
     })
   ],
