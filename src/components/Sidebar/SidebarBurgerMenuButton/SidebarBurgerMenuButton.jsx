@@ -16,7 +16,6 @@ export const SidebarBurgerMenuButton = ({
   const handleBurgerMenuOpen = () => {
     document.body.classList.add('body--overflow-hidden');
     const burgerMenuName = `burger${burgerName ? `-${burgerName}` : ''}`;
-    console.log(burgerMenuName);
     const sidebar = document.getElementById(burgerMenuName);
 
     sidebar.style.top = window.scrollY + 'px';

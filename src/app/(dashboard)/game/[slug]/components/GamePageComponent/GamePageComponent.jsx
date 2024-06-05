@@ -85,7 +85,7 @@ const GamePageComponent = ({ gameData }) => {
               <GameReviewButton className="game__review-score-button primary-button" />
             </div>
 
-            <GameReviewForm gameData />
+            <GameReviewForm gameSlug={gameData.slug} />
 
             <div className="game__review-comments">
               <GameComments comments={gameData?.comments} />

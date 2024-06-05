@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import React from 'react';
 
 export const GameReviewButton = () => {
-  // const { data: session } = useSession();
+  const { data: session } = useSession();
   const router = useRouter();
 
   const handleClick = (e) => {
@@ -16,12 +16,16 @@ export const GameReviewButton = () => {
         top: 0
       })
       router.replace('/authorization');
+
+      return;
     }
+
+    document.getElementById('comment-form-textarea').focus();
   }
 
   return (
     <Button onClick={handleClick} className="game__review-score-button primary-button">
-      Sing in to add a review
+      {session?.user ? 'Add review' : 'Sing in to add a review'}
     </Button>
   );
 };

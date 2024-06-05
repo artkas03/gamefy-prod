@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 import './styles.scss';
 
-// import axiosInstance from '@/utils/scripts/api';
+import axiosInstance from '@/utils/scripts/api';
 
 export const GameComment = ({
   nickname = '',
@@ -18,15 +18,13 @@ export const GameComment = ({
   const arrayFilled = new Array(mark).fill(0);
   const arrayEmpty = new Array(5 - mark).fill(0);
 
-  // const handleLike = (e) => {
-  //   axiosInstance.patch('/comments/likeComment', {
-  //     commentId
-  //   })
-  //     .then((response) => setCurrentLikes(response.data.response.likesNumber))
-  //     .catch((err) => console.error(err));
-  // }
-
-  const handleLike = () => {};
+  const handleLike = (e) => {
+    axiosInstance.patch('/comments/likeComment', {
+      commentId
+    })
+      .then((response) => setCurrentLikes(response.data.response.likesNumber))
+      .catch((err) => console.error(err));
+  }
 
   return (
     <div className="comment">
