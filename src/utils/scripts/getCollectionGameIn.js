@@ -9,7 +9,6 @@ const getCollectionGameIn = (gameId, userCollection) => {
     }
 
     if (value.includes(gameId)) {
-      console.log(collection);
       return collection;
     }
   })

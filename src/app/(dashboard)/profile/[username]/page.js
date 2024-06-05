@@ -32,8 +32,6 @@ export default async function Username({ params }) {
     notFound();
   }
 
-  console.log(userData);
-
   return (
     <div className="grid userpage">
       <UserpageSlider />

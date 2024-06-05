@@ -6,6 +6,8 @@ import { Analytics } from "@vercel/analytics/react";
 import './globals.css';
 import './App.scss';
 import Head from "next/head";
+import { SidebarMobileBurger } from "@/components/Sidebar/SidebarMobileBurger";
+import { SidebarBurger } from "@/components/Sidebar/SidebarBurger";
 
 export const metadata = {
   title: "Gamefy",
@@ -29,6 +31,8 @@ export default function RootLayout({ children }) {
 
           <SpeedInsights />
           <Analytics />
+          <SidebarBurger />
+          <SidebarMobileBurger />
         </Providers>
       </body>
     </html>

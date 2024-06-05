@@ -39,8 +39,6 @@ const addGameToCollection = async(params) => {
     options.newCollectionValue = [gameId];
   };
 
-  console.log(options);
-
   return updateGameToCollection(options);
 }
 

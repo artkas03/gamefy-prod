@@ -7,7 +7,7 @@ import { SidebarMobileBurger } from '@/components/Sidebar/SidebarMobileBurger';
 
 export default async function Home() {
   return (
-    <main className="grid general-wrapper">
+    <main id='main-container' className="grid general-wrapper">
       <div className="homepage grid">
         <HomepageSlider />
 
@@ -19,8 +19,8 @@ export default async function Home() {
         <HeaderBar />
       </div>
 
-      <SidebarBurger />
-      <SidebarMobileBurger />
+      {/* <SidebarBurger />
+      <SidebarMobileBurger /> */}
     </main>
   );
 }

@@ -33,7 +33,17 @@ export const authOptions = {
   pages: {
     signIn: '/authorization',
     signUp: '/registration'
-  }
+  },
+  callbacks: {
+    async session({ session }) {
+      const user = await getUser(session.user.email);
+
+      session.user.username = user.username;
+      session.user.userId = user.id;
+
+      return session;
+   }
+ }
 };
 
 const handler = NextAuth(authOptions);

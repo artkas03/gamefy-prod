@@ -140,7 +140,7 @@ export const HeaderBar = () => {
                       {userContextMenu.map(({ id, title, getLink }) => (
                         <DropdownItem key={id}>
                           {/* TODO: Unhardcode username */}
-                          <Link href={getLink('test')}>
+                          <Link href={getLink(session?.user.username)}>
                             {title}
                           </Link>
                         </DropdownItem>

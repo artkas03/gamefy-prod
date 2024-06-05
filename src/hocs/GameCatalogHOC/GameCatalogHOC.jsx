@@ -194,7 +194,7 @@ export const GameCatalogHOC = ({
             ))}
           </Select> */}
 
-          <SidebarBurgerMenuButton shouldDissapearFrom={'desktop'} />
+          {(!isShowHorizontalMenu && !isHideSidebar) && <SidebarBurgerMenuButton shouldDissapearFrom={'desktop'} />}
         </div>
       </div>
 

@@ -38,13 +38,6 @@ export const GameCard = memo(
       const currentCollection = addedToCollection;
       setAddedToCollection(newCollection);
 
-      console.log('handleAddToCollection: ', {
-        userEmail: session?.user.email,
-        gameSlug: slug,
-        oldCollection: currentCollection,
-        newCollection,
-      });
-
       axiosInstance
         .post('/userCollections/addGameToCollection', {
           userEmail: session?.user.email,

@@ -35,8 +35,6 @@ const GamePageComponent = ({ gameData }) => {
   //     .finally(() => setIsLoading(false));
   // }, [slug]);
 
-  // console.log(isLoading, JSON.stringify(gameData));
-
   const userScoreToWorkWith = gameData.userScore || defaultGameData;
 
   const averageGameMark = getAverageMark(userScoreToWorkWith);

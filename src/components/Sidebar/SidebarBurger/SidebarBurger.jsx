@@ -1,7 +1,6 @@
 'use client';
 import React, { useContext, useEffect, useMemo, useRef, useState } from 'react';
 
-import './styles.scss';
 import { Button, Divider } from '@nextui-org/react';
 import { SidebarCard } from '../SidebarCard';
 import { SidebarContext } from '@/context/SidebarContext';
