@@ -32,12 +32,10 @@ export const HomepageSlider = ({
   const [isDataLoading, setIsDataLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => {
-      axiosInstance.get(`/games/getGamesById?ids=${gamesIdsInSlider.join(',')}`)
-        .then((response) => setGamesData(response.data.games))
-        .catch(console.error)
-        .finally(() => setIsDataLoading(false))
-    }, 1000)
+    axiosInstance.get(`/games/getGamesById?ids=${gamesIdsInSlider.join(',')}`)
+      .then((response) => setGamesData(response.data.games))
+      .catch(console.error)
+      .finally(() => setIsDataLoading(false))
   }, []); 
 
   return (

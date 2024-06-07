@@ -94,7 +94,7 @@ export const GameCatalogHOC = ({
 
     setIsLoading(true);
 
-    axiosInstance.get(`/getGamesLength?query=${fetchWithQuery}`)
+    axiosInstance.get(`/games/getGamesLength?query=${fetchWithQuery}`)
       .then((response) => setGamesLength(response.data.gamesQuantity))
       .finally(() => setIsLoading(false));
   }, [fetchWithQuery, setGamesLength, horizonralMenuActiveList])

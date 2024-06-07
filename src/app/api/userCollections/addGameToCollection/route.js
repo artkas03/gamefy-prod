@@ -1,7 +1,7 @@
 import addGameToCollection from "@/controllers/userCollections/addGameToCollection";
 import { NextResponse } from "next/server";
 
-export async function POST(req) {
+export async function PATCH(req) {
   const data = await req.json();
 
   try {

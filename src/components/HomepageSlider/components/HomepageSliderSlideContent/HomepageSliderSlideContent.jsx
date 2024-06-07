@@ -64,7 +64,7 @@ export const HomepageSliderSlideContent = ({
     setAddedToCollection(newCollection);
 
     axiosInstance
-      .post('/userCollections/addGameToCollection', {
+      .patch('/userCollections/addGameToCollection', {
         userEmail: session?.user.email,
         gameSlug: gameData.slug,
         oldCollection: currentCollection,
