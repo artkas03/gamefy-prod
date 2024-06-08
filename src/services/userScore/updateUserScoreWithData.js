@@ -6,7 +6,7 @@ const updateUserScoreWithData = async(gameSlug, data) => {
       gameSlug
     },
     data,
-    cacheStrategy: { swr: 60, ttl: 60 },
+    // cacheStrategy: { swr: 60, ttl: 60 },
   });
 }
 
