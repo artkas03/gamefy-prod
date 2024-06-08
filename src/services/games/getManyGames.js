@@ -8,7 +8,6 @@ const getManyGames = async(options) => {
     ...(options?.fieldsToInclude ? { include: fieldsToInclude } : {}),
     ...(options?.fieldsToSelect ? { select: fieldsToSelect } : {}),
     ...(options?.optionsRaw ? options.optionsRaw : {}),
-    // cacheStrategy: { swr: 60, ttl: 60 },
   });
 }
 

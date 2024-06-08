@@ -9,7 +9,6 @@ const getGameBySlug = async(gameSlug, options) => {
     },
     ...(options?.fieldsToSelect ? { select: fieldsToSelect } : {}),
     ...(options?.optionsRaw ? options.optionsRaw : {}),
-    // cacheStrategy: { swr: 60, ttl: 60 },
   });
 }
 

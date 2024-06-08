@@ -8,7 +8,6 @@ const getUserScoreByGameSlug = async(gameSlug, options) => {
       gameSlug
     },
     ...(options?.fieldsToSelect ? { select: fieldsToSelect } : {}),
-    // cacheStrategy: { swr: 60, ttl: 60 },
   });
 }
 
