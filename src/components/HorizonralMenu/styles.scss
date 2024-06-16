@@ -7,6 +7,7 @@
   grid-column: 1 / -1;
   border-radius: 4px;
   background-color: $main-gray-800;
+  height: fit-content;
 
   &__list {
     display: flex;

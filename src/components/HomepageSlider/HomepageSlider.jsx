@@ -7,13 +7,6 @@ import { Skeleton } from '@nextui-org/react';
 import dynamic from 'next/dynamic';
 import { HomepageSliderBackground } from './components/HomepageSliderBackground';
 
-// const HomepageSliderBackgroundDynamic = dynamic(
-//   () => import('./components/HomepageSliderBackground').then((mod) => mod.HomepageSliderBackground), 
-//   {
-//     loading: () => <Skeleton className="w-[100%] h-[700px]" />
-//   }
-// );
-
 const HomepageSliderControllerDynamic = dynamic(
   () => import('./components/HomepageSliderController').then((mod) => mod.HomepageSliderController), 
   {
@@ -25,7 +18,8 @@ const gamesIdsInSlider = [48, 10, 4, 35, 19];
 
 export const HomepageSlider = ({
   isRenderSliderController = true,
-  isRenderSliderBackground = true
+  isRenderSliderBackground = true,
+  userData = null,
 }) => {
   const [activeSlideId, setActiveSlideId] = useState(0);
   const [gamesGata, setGamesData] = useState([]);
@@ -33,10 +27,13 @@ export const HomepageSlider = ({
 
   useEffect(() => {
     axiosInstance.get(`/games/getGamesById?ids=${gamesIdsInSlider.join(',')}`)
-      .then((response) => setGamesData(response.data.games))
+      .then((response) => {
+        setGamesData(response.data.games)
+        console.log(response.data.games)
+      })
       .catch(console.error)
       .finally(() => setIsDataLoading(false))
-  }, []); 
+  }, []);
 
   return (
     <div className="homepage-swiper">
@@ -46,6 +43,7 @@ export const HomepageSlider = ({
           allowTouchMove={false}
           activeSlideId={activeSlideId}
           onSwiperSlide={setActiveSlideId}
+          userData={userData}
         />
       )}
 

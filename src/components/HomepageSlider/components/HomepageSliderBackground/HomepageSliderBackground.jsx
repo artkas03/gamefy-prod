@@ -9,6 +9,7 @@ import image from '@/img/fallback-image.png';
 import 'swiper/css';
 import './styles.scss';
 import getS3ImageUrl from '@/utils/scripts/getS3ImageUrl';
+import getCollectionGameIn from '@/utils/scripts/getCollectionGameIn';
 
 export const HomepageSliderBackground = ({
   images,
@@ -16,6 +17,7 @@ export const HomepageSliderBackground = ({
   onSwiperSlide = () => {},
   isToHideSlidesContent = false,
   isUseLocaleImages = false,
+  userData = null,
   ...restProps
 }) => {
   const [swiper, setSwiper] = useState();
@@ -42,6 +44,8 @@ export const HomepageSliderBackground = ({
       {...restProps}
     >
       {images.map(({ id, slug, ...slideRestProps }) => {
+        const gameInCollection = userData && getCollectionGameIn(id, userData.collection);
+
         return (
           <SwiperSlide
             key={id}
@@ -50,6 +54,7 @@ export const HomepageSliderBackground = ({
               image={isUseLocaleImages ? slideRestProps.imageUrl : getS3ImageUrl(slug)} 
               gameData={{ slug, ...slideRestProps }}
               isHideContent={isToHideSlidesContent}
+              gameInCollection={gameInCollection}
             />
           </SwiperSlide>
         )
