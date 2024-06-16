@@ -42,7 +42,7 @@ export const GameCard = memo(
         .patch('/userCollections/addGameToCollection', {
           userEmail: session?.user.email,
           gameSlug: slug,
-          oldCollection: currentCollection,
+          oldCollection: currentCollection[0],
           newCollection,
         })
         .then((response) => setAddedToCollection(response.data.newCollection))
