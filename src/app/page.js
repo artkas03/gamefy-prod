@@ -36,7 +36,7 @@ export default async function Home() {
         <HomepageSlider userData={userData} />
 
         <div className="homepage__game-catalog">
-          <GameCatalogHOC title={'Games'} />
+          <GameCatalogHOC title={'Games'} userCollectionData={userData} />
         </div>
 
         <Footer />

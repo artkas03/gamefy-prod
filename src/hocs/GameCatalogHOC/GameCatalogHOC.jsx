@@ -56,6 +56,7 @@ export const GameCatalogHOC = ({
   isHideSidebar = false,
   isCatalogFullOnDesktop = false,
   fetchWithQuery = '',
+  userCollectionData = null,
 }) => {
   const { data: session } = useSession();
   const { breakpoint } = useBreakpoint(BREAKPOINTS, 'mobile');
@@ -224,7 +225,7 @@ export const GameCatalogHOC = ({
           <GameCatalog
             games={gamesToShow || pageGames}
             isFullWidthOnDesktop={isCatalogFullOnDesktop}
-            userCollection={userData}
+            userCollection={userData || userCollectionData}
           />
         )}
       </div>

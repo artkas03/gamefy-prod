@@ -32,7 +32,7 @@ export const GameCard = memo(
   }) => {
     const { data: session } = useSession();
     const [addedToCollection, setAddedToCollection] =
-      useState(userCollectionList ? userCollectionList[0] : '');
+      useState(userCollectionList || '');
 
     const handleAddToCollection = async (newCollection) => {
       const currentCollection = addedToCollection;
