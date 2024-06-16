@@ -41,7 +41,7 @@ const GameMarkList = ({
       axiosInstance.get('/comments/getCurrentUserMark' + `?gameSlug=${gameSlug}` + `&userEmail=${session.user.email}`)
         .then((response) => setUserMark(response.data.userMark));
     }
-  });
+  }, [session?.user, gameSlug]);
 
   return (
     <ul className="game__review-score-list">
