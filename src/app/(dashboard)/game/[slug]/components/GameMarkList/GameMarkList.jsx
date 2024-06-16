@@ -43,8 +43,6 @@ const GameMarkList = ({
     }
   });
 
-  console.log(Object.entries(markingRaw))
-
   return (
     <ul className="game__review-score-list">
       {Object.entries(markingRaw).map(([ mark, currentMarkNumber ]) => (

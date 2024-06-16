@@ -10,8 +10,6 @@ const likeCommentWithId = async (commentId, userId) => {
 
   const ifUserLikedPost = usersIdLikedCurrent.usersIdLiked.includes(userId);
 
-  console.log(usersIdLikedCurrent, userId);
-
   let updatedUsersIdLike = [...usersIdLikedCurrent.usersIdLiked];
 
   if (ifUserLikedPost) {
@@ -19,8 +17,6 @@ const likeCommentWithId = async (commentId, userId) => {
   } else {
     updatedUsersIdLike.push(userId);
   }
-
-  console.log(updatedUsersIdLike);
 
   return prismaClientInstance.comment.update({
     where: {

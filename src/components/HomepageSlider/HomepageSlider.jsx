@@ -29,7 +29,6 @@ export const HomepageSlider = ({
     axiosInstance.get(`/games/getGamesById?ids=${gamesIdsInSlider.join(',')}`)
       .then((response) => {
         setGamesData(response.data.games)
-        console.log(response.data.games)
       })
       .catch(console.error)
       .finally(() => setIsDataLoading(false))
