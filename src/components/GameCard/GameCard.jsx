@@ -64,7 +64,7 @@ export const GameCard = memo(
         .patch('/userCollections/deleteGameFromCollection', {
           userEmail: session?.user.email,
           gameSlug: slug,
-          currentCollection,
+          currentCollection: currentCollection[0],
         })
         .catch((err) => {
           setAddedToCollection(currentCollection);
