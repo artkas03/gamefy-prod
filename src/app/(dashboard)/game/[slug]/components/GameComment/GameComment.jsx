@@ -27,7 +27,7 @@ export const GameComment = ({
       commentId,
       userEmail: session.user.email
     })
-      .then((response) => setCurrentLikes(response.data.response.likesNumber))
+      .then((response) => setCurrentLikes(response.data.response.usersIdLiked.length))
       .catch((err) => console.error(err));
   }
 

@@ -12,7 +12,7 @@ export const GameComments = ({
         <p>There are no comments for this game yet.</p>
       )}
 
-      {comments.length > 0 && comments.map(({ id, likesNumber, text, user }) => (
+      {comments.length > 0 && comments.map(({ id, likesNumber, usersIdLiked, text, user }) => (
         <div key={id} className="comments__block">
           <GameComment
             commentId={id}
@@ -20,7 +20,7 @@ export const GameComments = ({
             commentText={text}
             // TODO: Replace hardcoded likes
             mark={4}
-            likeQuantity={likesNumber}
+            likeQuantity={usersIdLiked.length}
           />
         </div>
       ))}
