@@ -25,8 +25,7 @@ const likeCommentWithId = async (commentId, userId) => {
     data: {
       usersIdLiked: updatedUsersIdLike,
       likesNumber: ifUserLikedPost ? { decrement: 1 } : { increment: 1 }
-    },
-    cacheStrategy: { swr: 60, ttl: 60 },
+    }
   });;
 }
 
