@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import './styles.scss';
 
 import axiosInstance from '@/utils/scripts/api';
+import { useSession } from 'next-auth/react';
 
 export const GameComment = ({
   nickname = '',
@@ -14,13 +15,17 @@ export const GameComment = ({
   isLiked = false,
   commentId,
 }) => {
+  const { data: session } = useSession();
   const [currentLikes, setCurrentLikes] = useState(likeQuantity);
   const arrayFilled = new Array(mark).fill(0);
   const arrayEmpty = new Array(5 - mark).fill(0);
 
   const handleLike = (e) => {
+    if (!session?.user) return;
+
     axiosInstance.patch('/comments/likeComment', {
-      commentId
+      commentId,
+      userEmail: session.user.email
     })
       .then((response) => setCurrentLikes(response.data.response.likesNumber))
       .catch((err) => console.error(err));

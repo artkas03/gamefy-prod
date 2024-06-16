@@ -1,22 +1,26 @@
 import prismaClientInstance from "@/utils/scripts/prismaClientInstance";
 import getCommentById from "./getCommentById";
 
-const likeCommentWithId = async (commentId) => {
+const likeCommentWithId = async (commentId, userId) => {
   const usersIdLikedCurrent = await getCommentById(commentId, {
     fieldsToSelect: [
       'usersIdLiked'
     ]
   });
 
-  const ifUserLikedPost = usersIdLikedCurrent.usersIdLiked.includes(commentId);
+  const ifUserLikedPost = usersIdLikedCurrent.usersIdLiked.includes(userId);
+
+  console.log(usersIdLikedCurrent, userId);
 
   let updatedUsersIdLike = [...usersIdLikedCurrent.usersIdLiked];
 
   if (ifUserLikedPost) {
-    updatedUsersIdLike = updatedUsersIdLike.filter((id) => id !== commentId);
+    updatedUsersIdLike = updatedUsersIdLike.filter((id) => id !== userId);
   } else {
-    updatedUsersIdLike.push(commentId);
+    updatedUsersIdLike.push(userId);
   }
+
+  console.log(updatedUsersIdLike);
 
   return prismaClientInstance.comment.update({
     where: {
