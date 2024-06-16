@@ -10,7 +10,6 @@ const getUserByEmail = async(userEmail, options) => {
     },
     ...(options?.fieldsToSelect ? { select: fieldsToSelect } : {}),
     ...(options?.fieldsToInclude ? { include: fieldsToInclude } : {}),
-    cacheStrategy: { swr: 60, ttl: 60 },
   });
 }
 
