@@ -8,7 +8,6 @@ const getCommentById = async(commentId, options) => {
       id: commentId
     },
     ...(options?.fieldsToSelect ? { select: fieldsToSelect } : {}),
-    cacheStrategy: { swr: 60, ttl: 60 },
   });
 }
 
